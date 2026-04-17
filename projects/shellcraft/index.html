@@ -1,0 +1,63 @@
+---
+layout: editorial
+title: "shellcraft"
+description: "A macOS developer-machine bootstrapper."
+permalink: /projects/shellcraft/
+---
+
+<section class="lh__section">
+  <h1 class="lh__name">shellcraft.</h1>
+  <p class="lh__greeting">A macOS developer-machine bootstrapper.</p>
+  <hr class="lh__rule" />
+  <p>
+    Bootstraps and maintains a macOS developer machine with profile-based
+    package selection, preview-first execution, and managed-block dotfile
+    adoption. Rebuild your workstation in an hour without losing any of
+    your customizations.
+  </p>
+</section>
+
+<section class="lh__section">
+  <h2>Install</h2>
+  <pre><code>make plan PROFILE=core
+make install PROFILE=core
+make doctor PROFILE=core</code></pre>
+  <p>
+    Or via one-line remote bootstrap:
+  </p>
+  <pre><code>bash &lt;(curl -fsSL https://raw.githubusercontent.com/arcanelabsio/shellcraft/v1.0.0/setup-my-mac.sh) --plan</code></pre>
+  <p>
+    Hosted on <a href="https://github.com/arcanelabsio/shellcraft">GitHub</a>.
+    Requires macOS and Homebrew. MIT licensed.
+  </p>
+</section>
+
+<section class="lh__section">
+  <h2>Latest release</h2>
+  <p class="lh__post-meta">
+    <strong>v1.0.0</strong> · <time datetime="2026-04-17T17:25:29Z">April 17, 2026</time>
+  </p>
+
+  <div class="prose">
+    <h3>First stable release</h3>
+    <ul>
+      <li><strong>Preview-first execution</strong> — <code>make plan PROFILE=…</code> shows what will happen before anything is written. <code>--plan</code> is the default for <code>setup-my-mac.sh</code>.</li>
+      <li><strong>Profile-based package selection</strong> — additive profiles (<code>core</code>, <code>backend</code>, <code>ai</code>, <code>frontend</code>) so the same machine can pick up only what it needs: <code>PROFILE=core,backend,ai</code>.</li>
+      <li><strong>Managed-block dotfile adoption</strong> — <code>~/.zprofile</code>, <code>~/.zshrc</code>, <code>~/.gitconfig</code>, <code>~/.tmux.conf</code> are adopted via named include blocks. Everything outside the block is yours and survives every run.</li>
+      <li><strong>Opt-in identity changes</strong> — login-shell change, font install, GUI-assisted Xcode CLT install all default to off.</li>
+      <li><strong>Maintainer toolchain</strong> — repo-wide lint enforced at commit time, smoke tests for fresh and existing machines.</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="https://github.com/arcanelabsio/shellcraft/releases">Older releases →</a>
+  </p>
+</section>
+
+<section class="lh__section">
+  <h2>Links</h2>
+  <ul class="lh__list">
+    <li><a href="https://github.com/arcanelabsio/shellcraft"><strong>GitHub</strong></a> — source code and README</li>
+    <li><a href="https://github.com/arcanelabsio/shellcraft/blob/main/DESIGN.md"><strong>DESIGN.md</strong></a> — the pattern vs. the implementation</li>
+  </ul>
+</section>
