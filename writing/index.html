@@ -35,3 +35,20 @@ permalink: /writing/
     <p><em>Nothing published yet — first pieces are on the way.</em></p>
   {% endif %}
 </section>
+
+<section class="lh__section">
+  <div class="lh__sep">── <strong>AUTHORING</strong> ──────────────────────────────────────────────</div>
+  <p>
+    New posts go in <code>_posts/</code> as
+    <code>YYYY-MM-DD-your-slug.md</code> with this frontmatter:
+  </p>
+  <pre><code>---
+title: "Post title"
+description: "One-line preview shown on the index."
+date: 2026-04-20
+---</code></pre>
+  <p>
+    Plain markdown after that. The index picks it up automatically
+    and the URL becomes <code>/writing/your-slug/</code>.
+  </p>
+</section>

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Getting started with drive_sync_flutter"
 description: "Zero to a working Google Drive sync in about ten minutes."
 date: 2026-04-18

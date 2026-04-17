@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Getting started with forge"
 description: "One CLI, four AI coding assistants — install in thirty seconds, use for the rest of your day."
 date: 2026-04-19

@@ -49,11 +49,12 @@ kramdown:
   syntax_highlighter: rouge
   input: GFM
   hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  toc_levels: "2,3"
 
-# Posts live under /writing/:slug/
+# Posts live in _posts/ as <YYYY-MM-DD-slug>.md and render at /writing/<slug>/
 permalink: /writing/:slug/
-
-# Build future-dated posts too
 future: true
 
 defaults:
@@ -62,6 +63,10 @@ defaults:
       type: pages
     values:
       layout: default
+  - scope:
+      type: posts
+    values:
+      layout: post
 
 exclude:
   - README.md
@@ -69,13 +74,3 @@ exclude:
   - Gemfile.lock
   - vendor
   - .jekyll-cache
-
-# Top nav links.
-nav:
-  - title: Projects
-    url: /#projects
-  - title: GitHub
-    url: https://github.com/arcanelabsio
-    external: true
-  - title: Contact
-    url: /contact/

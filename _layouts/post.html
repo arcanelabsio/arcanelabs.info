@@ -3,7 +3,7 @@ layout: editorial
 ---
 <article class="lh__post">
   <div class="lh__post__head">
-    <span class="lh__post__crumb">writing / {{ page.slug | default: page.url | split: "/" | last }}.md</span>
+    <span class="lh__post__crumb">writing / {{ page.url | split: "/" | last }}.md</span>
     <time class="lh__post__date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
   </div>
 
