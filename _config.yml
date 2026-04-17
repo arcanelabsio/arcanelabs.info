@@ -10,7 +10,7 @@ baseurl: ""
 
 author:
   name: Arcane Labs
-  email: apps@arcanelabs.info
+  email: hello@arcanelabs.info
   url: https://arcanelabs.info
   github: arcanelabsio
 
@@ -18,7 +18,7 @@ author:
 organization:
   name: Arcane Labs
   url: https://github.com/arcanelabsio
-  email: apps@arcanelabs.info
+  email: hello@arcanelabs.info
 
 # Social — consumed by jekyll-seo-tag for Twitter/OG cards.
 twitter:
