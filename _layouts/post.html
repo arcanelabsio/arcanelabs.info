@@ -1,0 +1,23 @@
+---
+layout: editorial
+---
+<article>
+  <header class="lh__section">
+    <h1 class="lh__name">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="lh__greeting">{{ page.description }}</p>
+    {% endif %}
+    <p class="lh__post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    </p>
+    <hr class="lh__rule" />
+  </header>
+
+  <div class="lh__section prose">
+    {{ content }}
+  </div>
+
+  <p class="lh__backlink">
+    <a href="{{ '/writing/' | relative_url }}">← Back to writing</a>
+  </p>
+</article>

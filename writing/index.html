@@ -1,0 +1,34 @@
+---
+layout: editorial
+title: "Writing"
+description: "Notes, articles, and user guides from Arcane Labs."
+permalink: /writing/
+---
+
+<section class="lh__section">
+  <h1 class="lh__name">Writing.</h1>
+  <p class="lh__greeting">Notes, articles, and user guides.</p>
+  <hr class="lh__rule" />
+  <p>
+    Occasional writing about the projects in the catalog — design
+    decisions, user guides for the libraries, and what we're learning
+    as we build. Read in any order.
+  </p>
+</section>
+
+<section class="lh__section">
+  <h2>Posts</h2>
+  {% if site.posts.size > 0 %}
+    <ul class="lh__list">
+      {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}"><strong>{{ post.title }}</strong></a>{% if post.description %} — {{ post.description }}{% endif %}
+          <br>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p><em>Nothing published yet — first pieces are on the way.</em></p>
+  {% endif %}
+</section>
