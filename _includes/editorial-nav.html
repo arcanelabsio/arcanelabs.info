@@ -1,6 +1,7 @@
 {% assign p = page.url %}
 <nav class="lh__nav" aria-label="Primary">
   <div class="lh__nav-links">
+    <a href="{{ '/' | relative_url }}" class="lh__nav-brand">arcanelabs</a>
     <a href="{{ '/' | relative_url }}"{% if p == '/' %} class="is-current"{% endif %}>Home</a>
     <span class="dot">·</span>
     <a href="{{ '/writing/' | relative_url }}"{% if p contains '/writing' %} class="is-current"{% endif %}>Writing</a>
