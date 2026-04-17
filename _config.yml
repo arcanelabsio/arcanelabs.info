@@ -1,9 +1,10 @@
 title: Arcane Labs
-tagline: Intelligent tools that run on your own infrastructure
+tagline: Software built for reuse — a solo builder's portfolio
 description: >
-  Arcane Labs is an independent software studio. We build intelligent systems
-  on top of user-owned storage — structured data layers, sync protocols, and
-  AI that runs in your own session. No servers in between.
+  Arcane Labs is where Ajit Gunturi publishes software that graduates past
+  ideation. Small tools, libraries, and apps built around one principle:
+  solve common problems with the minimum complexity needed and the maximum
+  flexibility to adapt.
 
 url: "https://arcanelabs.info"
 baseurl: ""
@@ -67,9 +68,9 @@ exclude:
 
 # Top nav links.
 nav:
-  - title: Products
-    url: /#products
-  - title: Open Source
+  - title: Projects
+    url: /#projects
+  - title: GitHub
     url: https://github.com/arcanelabsio
     external: true
   - title: Contact

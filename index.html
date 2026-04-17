@@ -1,19 +1,20 @@
 ---
 layout: default
-title: Arcane Labs — Independent software studio
-description: An independent software studio shipping focused tools — personal health, family finance, developer productivity, and AI-augmented engineering workflows.
+title: "Software built for reuse"
+description: "A solo builder's portfolio — small tools, libraries, and apps built around one principle: minimum complexity, maximum flexibility, reuse-first."
 ---
 
 <section class="hero">
   <div class="wrap">
-    <h1>An independent software studio.</h1>
+    <h1>Software built for reuse.</h1>
     <p class="hero__sub">
-      We build focused tools — for personal health, family finance,
-      developer productivity, and the AI-assisted engineering workflow we
-      use ourselves. Small surface per product, shipped by a small team.
+      Small tools, libraries, and apps from a single builder. Every
+      project starts from one principle: solve common problems with the
+      minimum complexity needed and the maximum flexibility to adapt.
+      When an idea graduates past ideation, it ships here.
     </p>
     <div class="hero__links">
-      <a href="#products" class="primary">Products</a>
+      <a href="#projects" class="primary">Projects</a>
       <a href="https://github.com/arcanelabsio" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
@@ -21,7 +22,7 @@ description: An independent software studio shipping focused tools — personal 
 
 <section class="section">
   <div class="wrap">
-    <div class="section__label">How we build</div>
+    <div class="section__label">How I build</div>
 
     <div class="principles">
       <div class="principles__item">
@@ -30,85 +31,52 @@ description: An independent software studio shipping focused tools — personal 
         <p>Schemas, interfaces, and architectural decisions are written
         first; implementations follow. Every non-trivial choice lives as
         an ADR in the project's <span class="mono">docs/adr/</span> —
-        future-us gets the <em>why</em>, not just the <em>what</em>.</p>
+        future-me gets the <em>why</em>, not just the <em>what</em>.</p>
       </div>
       <div class="principles__item">
         <div class="principles__num">02</div>
-        <h3>Small surface per product</h3>
-        <p>One thing done well beats five things half-done. Each product
-        is scoped so a small team can ship it and support it. Architecture
-        is chosen for the problem, not imposed by an org-wide playbook.</p>
+        <h3>Small surface per project</h3>
+        <p>One thing done well beats five things half-done. Each project
+        is scoped so a single builder can ship it and support it.
+        Architecture is chosen for the problem, not imposed by an
+        org-wide playbook.</p>
       </div>
       <div class="principles__item">
         <div class="principles__num">03</div>
         <h3>AI-augmented, not AI-dependent</h3>
-        <p>We use AI assistants heavily in our own workflow, and we build
-        tooling (Forge, practitioner workflows) that assumes AI is part of
-        the toolkit. But the products degrade gracefully when the model
-        isn't there.</p>
+        <p>I use AI assistants heavily in my own workflow, and I build
+        tooling (Forge, practitioner workflows) that assumes AI is part
+        of the toolkit. But the products degrade gracefully when the
+        model isn't there.</p>
+      </div>
+      <div class="principles__item">
+        <div class="principles__num">04</div>
+        <h3>Reuse before rebuild</h3>
+        <p>Every new project is scouted for what already exists in the
+        portfolio. <span class="mono">drive_sync_flutter</span> is the
+        shape of that bet — one library that solves Drive sync once,
+        used by every app that needs it.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="products" class="section" style="background: var(--bg-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+<section id="projects" class="section" style="background: var(--bg-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
   <div class="wrap">
-    <div class="section__label">Products</div>
-
-    <div class="products">
-      <div class="product">
-        <div class="product__mark product__mark--L">L</div>
-        <div class="product__body">
-          <h3>Longeviti</h3>
-          <div class="product__status">Rebuilding &middot; Waitlist open</div>
-          <p>
-            Nutrition coaching, grounded in your health reports. A
-            practitioner-led platform for certified nutritionists and
-            their clients — blood work and tracking in, personalized meal
-            and supplement plans out. Rebuilding the client-facing
-            platform in 2026.
-          </p>
-          <div class="product__links">
-            <a href="https://longeviti.app">Waitlist →</a>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product__mark product__mark--V">V</div>
-        <div class="product__body">
-          <h3>Vael</h3>
-          <div class="product__status">In development</div>
-          <p>
-            A local-first family finance app for Indian households.
-            Encrypted client-side with AES-256-GCM; synced through Google
-            Drive as blind ciphertext. Families share a net-worth view
-            without surrendering data to anyone — including us.
-          </p>
-          <div class="product__links">
-            <a href="mailto:support@arcanelabs.info?subject=Vael%20access%20request">Request access →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section__label">Open source</div>
+    <div class="section__label">Shipping</div>
 
     <div class="repos">
       <a href="https://github.com/arcanelabsio/drive_sync_flutter" class="repo" target="_blank" rel="noopener">
         <div class="repo__name">drive_sync_flutter</div>
-        <p class="repo__desc">Bidirectional Google Drive sync for Flutter apps. Three OAuth scope modes, SHA256 change detection, conflict resolution, nested folder support.</p>
+        <p class="repo__desc">Bidirectional Google Drive sync for Flutter apps. Three OAuth scope modes, SHA256 change detection, conflict resolution, nested folder support. Published on pub.dev.</p>
       </a>
       <a href="https://github.com/arcanelabsio/forge" class="repo" target="_blank" rel="noopener">
         <div class="repo__name">forge</div>
-        <p class="repo__desc">AI plugins for Copilot, Claude, Codex, and Gemini — engineering quality tools for discussions, issues, PRs, and commits.</p>
+        <p class="repo__desc">One CLI, four AI assistants. Installs engineering-quality plugins into Copilot, Claude, Codex, and Gemini — discussion analysis, PR review, commit coaching. Published on npm.</p>
       </a>
       <a href="https://github.com/arcanelabsio/shellcraft" class="repo" target="_blank" rel="noopener">
         <div class="repo__name">shellcraft</div>
-        <p class="repo__desc">macOS dev machine bootstrapper. Profile-based package selection and non-destructive dotfile management.</p>
+        <p class="repo__desc">macOS dev-machine bootstrapper. Profile-based package selection with preview-first execution and managed-block dotfile adoption — rebuild your workstation in an hour, keep your customizations.</p>
       </a>
     </div>
 
@@ -116,6 +84,74 @@ description: An independent software studio shipping focused tools — personal 
       <a href="https://github.com/arcanelabsio" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 600;">
         All repositories →
       </a>
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section__label">In development</div>
+
+    <div class="products">
+      <div class="product">
+        <div class="product__mark product__mark--L">L</div>
+        <div class="product__body">
+          <h3>Longeviti</h3>
+          <div class="product__status">Active build</div>
+          <p>
+            Nutrition coaching grounded in your health reports.
+            Certified practitioners review blood work, tracking, and
+            daily logs, and deliver personalized meal and supplement
+            plans through a modern app. Built jointly with a practicing
+            nutritionist.
+          </p>
+          <p>
+            <span class="text-faint text-sm">Flutter (client) &middot; Practitioner web app &middot; Google Drive data layer &middot; Claude Code skills (ELARA / ATLAS)</span>
+          </p>
+          <div class="product__links">
+            <a href="https://longeviti.app">longeviti.app →</a>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product__mark product__mark--V">V</div>
+        <div class="product__body">
+          <h3>Vael</h3>
+          <div class="product__status">Active build</div>
+          <p>
+            A local-first family finance app for Indian households —
+            accounts, expenses, net worth, shared across family members
+            without surrendering data to anyone. Every byte of financial
+            data is encrypted client-side with AES-256-GCM before it
+            leaves your device; Google Drive is used as blind ciphertext
+            transport. No servers, no subscriptions.
+          </p>
+          <p>
+            <span class="text-faint text-sm">Flutter &middot; Client-side AES-GCM &middot; Drive-as-blind-transport &middot; Zero-server</span>
+          </p>
+          <p class="text-faint text-sm">
+            Source currently private. For access or collaboration, email
+            <a href="mailto:support@arcanelabs.info?subject=Vael%20access%20request">support@arcanelabs.info</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <div class="wrap">
+    <div class="section__label">About</div>
+    <h2 style="margin-top: 0;">Built by Ajit Gunturi.</h2>
+    <p style="max-width: 60ch;">
+      R&amp;D engineer with a platform and control-plane background.
+      ISB Emerging Leaders alum. Arcane Labs is where I publish ideas
+      that pass ideation — a portfolio built for reuse, not a company
+      raising money.
+    </p>
+    <p style="max-width: 60ch;">
+      Find me on <a href="https://github.com/ajitgunturi">GitHub</a>
+      or <a href="https://www.linkedin.com/in/ajitkumargunturi/">LinkedIn</a>.
     </p>
   </div>
 </section>
