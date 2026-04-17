@@ -762,3 +762,82 @@ a { color: inherit; }
   .lh__meta dt { margin-top: 8px; }
   .lh .prose ul li, .lh .prose ol li { grid-template-columns: 20px 1fr; }
 }
+
+/* ---------- highlight.js tokens (mapped to palette) ---------- */
+.lh .hljs { color: var(--fg); background: none; }
+.lh .hljs-keyword,
+.lh .hljs-selector-tag,
+.lh .hljs-literal,
+.lh .hljs-built_in,
+.lh .hljs-type { color: var(--amber); }
+.lh .hljs-string,
+.lh .hljs-attr,
+.lh .hljs-meta-string,
+.lh .hljs-symbol,
+.lh .hljs-template-variable,
+.lh .hljs-template-tag { color: var(--mint-soft); }
+.lh .hljs-number,
+.lh .hljs-variable,
+.lh .hljs-regexp { color: var(--blue); }
+.lh .hljs-title,
+.lh .hljs-name,
+.lh .hljs-section,
+.lh .hljs-selector-id,
+.lh .hljs-tag { color: var(--amber); font-weight: 500; }
+.lh .hljs-comment,
+.lh .hljs-quote { color: var(--muted); font-style: italic; }
+.lh .hljs-meta,
+.lh .hljs-params,
+.lh .hljs-bullet { color: var(--fg-mute); }
+.lh .hljs-emphasis { font-style: italic; }
+.lh .hljs-strong { font-weight: 700; }
+
+/* ---------- Markdown autolink headings ---------- */
+.lh__post__content .anchor,
+.lh .prose .anchor {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0;
+}
+.lh__post__content h1 > a,
+.lh__post__content h2 > a,
+.lh__post__content h3 > a,
+.lh__post__content h4 > a,
+.lh .prose h1 > a,
+.lh .prose h2 > a,
+.lh .prose h3 > a,
+.lh .prose h4 > a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+/* ---------- Diagram wrapper ---------- */
+.lh__diagram {
+  margin: 1.6em 0;
+  padding: 20px 18px;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 4px 4px 0;
+  overflow-x: auto;
+}
+.lh__diagram svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+.lh__diagram img { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+.lh__diagram__source {
+  font-size: 12px;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.lh__diagram__source::before { content: "// rendering diagram…"; display: block; color: var(--muted); margin-bottom: 10px; }
+.lh__diagram__error {
+  color: var(--red);
+  font-size: 12px;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}

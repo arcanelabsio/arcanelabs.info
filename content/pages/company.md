@@ -1,10 +1,7 @@
 ---
 title: "Company"
 description: "About Arcane Labs — an independent software studio based in Bengaluru, India."
----
-
-Details about Arcane Labs.
-
+greeting: "Details about Arcane Labs."
 ---
 
 Arcane Labs is an independent software studio based in Bengaluru,

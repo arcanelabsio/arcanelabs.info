@@ -1,15 +1,17 @@
 import { TerminalShell } from "../components/TerminalShell";
+import { Markdown } from "../components/Markdown";
+import { getPage } from "../content/loader";
 
 export function Contact() {
+  const page = getPage("contact");
   return (
     <TerminalShell chromeTitle="contact">
       <section className="lh__section">
-        <p className="lh__greeting">How to reach Arcane Labs.</p>
+        {page?.greeting && <p className="lh__greeting">{page.greeting}</p>}
         <hr className="lh__rule" />
-        <p>
-          <em>Phase-1 stub.</em> Rendered from{" "}
-          <code>content/pages/contact.md</code> in phase 3.
-        </p>
+        <div className="prose">
+          <Markdown source={page?.body ?? ""} variant="page" />
+        </div>
       </section>
     </TerminalShell>
   );

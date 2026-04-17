@@ -1,4 +1,6 @@
 import { TerminalShell } from "../components/TerminalShell";
+import { Markdown } from "../components/Markdown";
+import { getPage } from "../content/loader";
 
 const ASCII = ` █████╗ ██████╗  ██████╗ █████╗ ███╗   ██╗███████╗    ██╗      █████╗ ██████╗ ███████╗
 ██╔══██╗██╔══██╗██╔════╝██╔══██╗████╗  ██║██╔════╝    ██║     ██╔══██╗██╔══██╗██╔════╝
@@ -8,6 +10,7 @@ const ASCII = ` █████╗ ██████╗  ██████╗ 
 ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝    ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝`;
 
 export function Home() {
+  const page = getPage("home");
   return (
     <TerminalShell chromeTitle="home">
       <section className="lh__section">
@@ -16,15 +19,11 @@ export function Home() {
             {ASCII}
           </pre>
         </h1>
-        <p className="lh__greeting">
-          An independent software studio. Privacy-first, local-first software.
-        </p>
+        {page?.greeting && <p className="lh__greeting">{page.greeting}</p>}
         <hr className="lh__rule" />
-        <p>
-          <em>Phase-1 scaffold.</em> Content migrates to{" "}
-          <code>content/pages/home.md</code> in phase 2; markdown pipeline
-          lights up in phase 3.
-        </p>
+        <div className="prose">
+          <Markdown source={page?.body ?? ""} variant="page" />
+        </div>
       </section>
     </TerminalShell>
   );

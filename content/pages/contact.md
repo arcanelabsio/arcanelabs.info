@@ -1,10 +1,7 @@
 ---
 title: "Contact"
 description: "How to reach Arcane Labs."
----
-
-How to reach Arcane Labs.
-
+greeting: "How to reach Arcane Labs."
 ---
 
 For anything at all, [hello@arcanelabs.info](mailto:hello@arcanelabs.info)

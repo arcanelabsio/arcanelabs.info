@@ -1,10 +1,7 @@
 ---
 title: "Arcane Labs"
 description: "An independent software studio building privacy-first, local-first software. Your data stays yours."
----
-
-An independent software studio. Privacy-first, local-first software.
-
+greeting: "An independent software studio. Privacy-first, local-first software."
 ---
 
 Arcane Labs is an independent software studio building privacy-first,
