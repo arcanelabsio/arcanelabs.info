@@ -1,56 +1,50 @@
 # arcanelabs.info — project state
 
-## Current phase: Phase 4 — Jekyll removal + GH Pages deploy (queued)
+## Current phase: Phase 5 — SSG prerender (queued)
 
-Phase 3 complete. The markdown pipeline is live: every route pulls
-content from `content/**/*.md` via `import.meta.glob`, frontmatter is
-parsed with `yaml`, bodies render through react-markdown with GFM,
-slug anchors, autolink headings, and syntax highlighting. Mermaid
-renders client-side (lazy-loaded) and PlantUML via kroki.io. SSR
-verified across all 10 URL shapes with real markdown HTML output.
+Phase 4 complete. Jekyll is gone. The repo now builds exclusively
+through Vite, deploys through GitHub Actions to the custom domain,
+and serves SPA routes via the 404.html fallback trick for deep
+links. The live site will flip from Jekyll-rendered HTML to the
+Vite SPA the moment this is pushed — readers see a client-rendered
+SPA until phase 5 enables SSG.
 
-### Phase 3 — completed 2026-04-18
+### Phase 4 — completed 2026-04-18
 
-- `src/content/types.ts` — `Post`, `Project`, `Page`, `Link`, `Release`
-- `src/content/frontmatter.ts` — `splitFrontmatter` via `yaml`
-- `src/content/loader.ts` — eager glob imports, typed indexes, by-slug
-  getters; posts sorted by date desc, projects by name asc
-- `src/components/Markdown.tsx` — remark-gfm, remark-frontmatter,
-  rehype-slug, rehype-autolink-headings, rehype-highlight (restricted
-  to 9 languages: bash/js/ts/yaml/dart/makefile/markdown/json/xml).
-  Custom `a` → Link for internal URLs, custom `code` → Diagram for
-  mermaid/plantuml fences, `node` prop dropped from all renderers to
-  prevent DOM leak. Variant="page" maps h2 → `.lh__sep`.
-- `src/components/Diagram.tsx` — mermaid via dynamic `import()`
-  (SSR-safe placeholder), plantuml via `plantuml-encoder` +
-  `https://kroki.io/plantuml/svg/<encoded>`
-- Page frontmatters gained `greeting` field so the `.lh__greeting`
-  top-of-page styling survives the HTML→markdown migration
-- Routes now pull from loader; phase-1 stubs replaced
-- editorial.css extended with highlight.js token colors (mapped to
-  palette) and `.lh__diagram` styles
-- Build outputs:
-  - Client: 744 KB / 233 KB gz main + ~35 Mermaid chunks (lazy)
-  - SSR: 42 KB
-  - Bundle size warning accepted — Phase 6 polish can lazy-load the
-    Markdown component for subsequent routes
-- SSR smoke test: /, /writing, both posts, all 3 projects, /company,
-  /contact, /nonexistent — every URL renders with content intact
+- `public/CNAME` — moved from root, Vite copies to `dist/CNAME`
+- `public/robots.txt` — stripped of Jekyll frontmatter, points to
+  the phase-5 sitemap at `/sitemap.xml`
+- `public/404.html` — the SPA-GH-Pages fallback: stashes
+  `location.pathname + search + hash` into sessionStorage and
+  `location.replace('/')`. `src/entry-client.tsx` replays this into
+  history before the router mounts, so deep links (e.g.
+  `arcanelabs.info/writing/my-post`) resolve correctly on first hit.
+- `.github/workflows/deploy-pages.yml` — triggers on push to main,
+  Node 22 via `.nvmrc`, `actions/deploy-pages@v4`
+- Deleted: Gemfile, Gemfile.lock, .ruby-version, _config.yml,
+  _layouts/ (3 files), _includes/ (5 files), writing/index.html,
+  company/index.html, contact.html, projects/{drive_sync_flutter,
+  forge, shellcraft}/index.html, root 404.html, assets/css/ (both
+  CSS files — editorial.css was already copied into src/styles/)
+- README rewritten for the new stack
+- .gitignore trimmed of Jekyll cache entries
 
-### Phase 4 — next
-Delete Jekyll infrastructure, move preserved files to Vite/public,
-add GitHub Actions deployment, wire the SPA 404.html fallback.
+First-time deploy prerequisite: **Repo Settings → Pages → Source**
+must be set to **GitHub Actions** (not "Deploy from a branch").
 
-- Delete: `Gemfile`, `.ruby-version`, `_config.yml`, `_layouts/`,
-  `_includes/`, `writing/`, `company/`, `contact.html`,
-  `projects/*/index.html`, old `index.html` redirect (verify not
-  needed), `404.html` (old Jekyll one), `assets/` (CSS already
-  copied into `src/styles/`)
-- Preserve, relocate to `public/`: `CNAME`, `robots.txt`,
-  and the new SPA-fallback `404.html`
-- Add `.github/workflows/deploy-pages.yml` — Node 22 via `.nvmrc`,
-  `actions/deploy-pages@v4`, triggered on push to main
-- Add `public/404.html` with the spa-github-pages redirect script
-- README updated for new stack
+### Phase 5 — next
 
-Commit: `refactor: remove jekyll; build and deploy via vite`.
+Enable SSG prerender per PLAN.md §9:
+
+- `scripts/prerender.mjs` — enumerates routes (static paths from
+  `src/App.tsx`'s `allStaticPaths()` + dynamic slugs from
+  `content/posts/*` and `content/projects/*`), calls `render(url)`
+  per route, injects output into `dist/index.html` template, writes
+  `dist/<path>/index.html`
+- `scripts/generate-sitemap.mjs` — same enumeration → `dist/sitemap.xml`
+- `package.json` — `postbuild` hook runs SSR build + prerender +
+  sitemap
+- Per-route `<title>` + `<meta description>` via a minimal head
+  context (no react-helmet-async dep)
+
+Commit: `feat: prerender routes to static HTML`.
