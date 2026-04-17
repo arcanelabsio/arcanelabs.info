@@ -1,72 +1,24 @@
----
-layout: editorial
-title: "Arcane Labs"
-description: "An independent software studio building privacy-first, local-first software. Your data stays yours."
----
-
-<section class="lh__section">
-  <h1 class="lh__hero" aria-label="Arcane Labs"><pre class="lh__ascii" aria-hidden="true"> █████╗ ██████╗  ██████╗ █████╗ ███╗   ██╗███████╗    ██╗      █████╗ ██████╗ ███████╗
-██╔══██╗██╔══██╗██╔════╝██╔══██╗████╗  ██║██╔════╝    ██║     ██╔══██╗██╔══██╗██╔════╝
-███████║██████╔╝██║     ███████║██╔██╗ ██║█████╗      ██║     ███████║██████╔╝███████╗
-██╔══██║██╔══██╗██║     ██╔══██║██║╚██╗██║██╔══╝      ██║     ██╔══██║██╔══██╗╚════██║
-██║  ██║██║  ██║╚██████╗██║  ██║██║ ╚████║███████╗    ███████╗██║  ██║██████╔╝███████║
-╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝    ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝</pre></h1>
-
-  <p class="lh__greeting">An independent software studio. Privacy-first, local-first software.</p>
-
-  <hr class="lh__rule" />
-
-  <p>
-    Arcane Labs is an independent software studio building
-    privacy-first, local-first applications and developer tools.
-    The label exists to give considered, small software a home
-    where it can be maintained, released, and used.
-  </p>
-  <p>
-    Projects graduate into this catalog once they're maintained,
-    release-ready, and externally consumable — as an app, a
-    library, or a tool anyone can install.
-  </p>
-</section>
-
-<section class="lh__section">
-  <div class="lh__sep">── <strong>01 / THE THREE RULES</strong> ──────────────────────────────────────</div>
-  <ol class="lh__rules">
-    <li><strong class="num">[1]</strong><span><em>Your data</em> should stay yours.</span></li>
-    <li><strong class="num">[2]</strong><span><em>The best features</em> don't need a server.</span></li>
-    <li><strong class="num">[3]</strong><span><em>Complexity</em> should live in the architecture — not in the user's face.</span></li>
-  </ol>
-</section>
-
-<section class="lh__section" id="projects">
-  <div class="lh__sep">── <strong>02 / THE CATALOG</strong> ──────────────────────────────────────────</div>
-  <ul class="lh__list">
-    <li>
-      <a href="{{ '/projects/drive_sync_flutter/' | relative_url }}"><strong>drive_sync_flutter</strong></a> —
-      a Google Drive sync library for Flutter. Published on
-      <a href="https://pub.dev/packages/drive_sync_flutter">pub.dev</a>.
-      <em>Shipping.</em>
-    </li>
-    <li>
-      <a href="{{ '/projects/forge/' | relative_url }}"><strong>forge</strong></a> —
-      one CLI, four AI coding assistants. Published on
-      <a href="https://www.npmjs.com/package/forge-ai-assist">npm</a>.
-      <em>Shipping.</em>
-    </li>
-    <li>
-      <a href="{{ '/projects/shellcraft/' | relative_url }}"><strong>shellcraft</strong></a> —
-      a macOS developer-machine bootstrapper.
-      <em>Shipping.</em>
-    </li>
-    <li>
-      <a href="https://longeviti.app"><strong>Longeviti</strong></a> —
-      a nutrition coaching platform.
-      <em>Active build.</em>
-    </li>
-    <li>
-      <strong>Vael</strong> —
-      a local-first personal finance app.
-      <em>Active build.</em>
-    </li>
-  </ul>
-</section>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080b10" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Arcane Labs</title>
+    <meta
+      name="description"
+      content="An independent software studio building privacy-first, local-first software. Your data stays yours."
+    />
+  </head>
+  <body class="editorial">
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
+  </body>
+</html>

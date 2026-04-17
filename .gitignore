@@ -4,3 +4,10 @@ _site/
 .jekyll-metadata
 vendor/
 Gemfile.lock
+
+# Vite / React app (phase-1 scaffold, Jekyll still primary until phase 4)
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
