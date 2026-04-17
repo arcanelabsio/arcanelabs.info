@@ -1,9 +1,9 @@
 title: Arcane Labs
-tagline: Privacy-first tools for personal data sovereignty
+tagline: Intelligent tools that run on your own infrastructure
 description: >
-  Arcane Labs is an independent software studio building open, privacy-first
-  tools. Your data stays yours — on your device, in your cloud storage,
-  under your control. We build the intelligence layer; you own the data.
+  Arcane Labs is an independent software studio. We build intelligent systems
+  on top of user-owned storage — structured data layers, sync protocols, and
+  AI that runs in your own session. No servers in between.
 
 url: "https://site.arcanelabs.io"
 baseurl: ""
@@ -33,7 +33,7 @@ social:
 
 repository: arcanelabsio/arcanelabs.info
 
-# No pre-built theme — we ship our own CSS to mirror the Longeviti design tokens.
+# No pre-built theme — independent minimalist design system.
 theme: null
 
 plugins:
