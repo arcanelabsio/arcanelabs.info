@@ -1,6 +1,6 @@
 # arcanelabs.info
 
-Company site for [Arcane Labs](https://site.arcanelabs.info). Built with Jekyll, deployed via GitHub Pages.
+Company site for [Arcane Labs](https://arcanelabs.info). Built with Jekyll, deployed via GitHub Pages.
 
 ## Local development
 
@@ -22,7 +22,7 @@ index.html           Landing page
 products.html        Product listings
 contact.html         Contact page
 404.html             Error page
-CNAME                Custom domain: site.arcanelabs.info
+CNAME                Custom domain: arcanelabs.info
 ```
 
 ## License
