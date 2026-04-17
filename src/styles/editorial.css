@@ -359,28 +359,31 @@ a { color: inherit; }
   color: var(--muted);
 }
 
-/* Prose lists inside posts */
+/* Prose lists inside posts — absolute-positioned marker so inline
+   content inside a <li> flows naturally. Grid placement would
+   put each inline child in its own cell. */
 .lh .prose ul {
   list-style: none;
   padding-left: 0;
   margin: 1em 0;
 }
 .lh .prose ul li {
+  position: relative;
   background: none;
-  border: none;
-  padding: 0 0 0.4em;
-  display: grid;
-  grid-template-columns: 24px 1fr;
+  border: 0;
   border-radius: 0;
-  border-left: 0;
+  padding: 0 0 0.4em 24px;
 }
 .lh .prose ul li:hover { transform: none; }
 .lh .prose ul li::before {
   content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--mint);
   font-family: var(--f-mono);
 }
-.lh .prose ul li > ul { margin: 0.4em 0 0; grid-column: 1 / -1; padding-left: 24px; }
+.lh .prose ul li > ul { margin: 0.4em 0 0; }
 .lh .prose ol {
   list-style: none;
   counter-reset: step;
@@ -389,17 +392,18 @@ a { color: inherit; }
 }
 .lh .prose ol li {
   counter-increment: step;
+  position: relative;
   background: none;
-  border: none;
-  padding: 0 0 0.4em;
-  display: grid;
-  grid-template-columns: 32px 1fr;
+  border: 0;
   border-radius: 0;
-  border-left: 0;
+  padding: 0 0 0.4em 32px;
 }
 .lh .prose ol li:hover { transform: none; }
 .lh .prose ol li::before {
   content: "[" counter(step) "]";
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--mint);
   font-weight: 600;
 }
@@ -649,20 +653,20 @@ a { color: inherit; }
 }
 .lh__post__content ul li,
 .lh__post__content ol li {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 4px;
-  padding: 0 0 0.45em;
+  position: relative;
+  padding: 0 0 0.45em 28px;
   background: none;
   border: 0;
   border-radius: 0;
-  align-items: baseline;
   max-width: none;
 }
 .lh__post__content ul li:hover,
 .lh__post__content ol li:hover { transform: none; border: 0; }
 .lh__post__content ul li::before {
   content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--mint);
   font-family: var(--f-mono);
 }
@@ -672,9 +676,33 @@ a { color: inherit; }
 }
 .lh__post__content ol li::before {
   content: "[" counter(step) "]";
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--mint);
   font-weight: 600;
   font-size: 12px;
+}
+
+/* Loose-list <p> — inside <li>, strip .lh p max-width + margins so
+   items still collapse visually while allowing nested paragraphs. */
+.lh__post__content li > p,
+.lh .prose li > p {
+  margin: 0 0 0.5em;
+  max-width: none;
+}
+.lh__post__content li > p:last-child,
+.lh .prose li > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Nested list inside a list item shouldn't inherit outer padding-left;
+   it's already offset by its parent's padding. */
+.lh__post__content li > ul,
+.lh__post__content li > ol,
+.lh .prose li > ul,
+.lh .prose li > ol {
+  margin: 0.4em 0 0;
 }
 
 /* Syntax-highlighted tokens (Rouge) */
