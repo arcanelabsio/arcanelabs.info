@@ -18,8 +18,7 @@ _config.yml          Site config + plugin activation
 _includes/           head.html, nav.html, footer.html
 _layouts/            default.html
 assets/css/          main.css — independent minimalist design system
-index.html           Landing page
-products.html        Product listings
+index.html           Landing page (product listings live here under #products)
 contact.html         Contact page
 404.html             Error page
 CNAME                Custom domain: arcanelabs.info

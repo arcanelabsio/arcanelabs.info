@@ -68,7 +68,7 @@ exclude:
 # Top nav links.
 nav:
   - title: Products
-    url: /products/
+    url: /#products
   - title: Open Source
     url: https://github.com/arcanelabsio
     external: true
