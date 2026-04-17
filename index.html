@@ -1,17 +1,16 @@
 ---
 layout: default
-title: Arcane Labs — Intelligent tools that run on your own infrastructure
-description: Independent software studio building intelligent systems on top of user-owned storage — structured data layers, sync protocols, and AI that runs in your own session.
+title: Arcane Labs — Independent software studio
+description: An independent software studio shipping focused tools — personal health, family finance, developer productivity, and AI-augmented engineering workflows.
 ---
 
 <section class="hero">
   <div class="wrap">
-    <h1>Intelligent tools that run on your own infrastructure.</h1>
+    <h1>An independent software studio.</h1>
     <p class="hero__sub">
-      We build systems that pair structured data on your cloud storage with
-      AI that runs in your own session. No servers in between. Your data
-      stays yours — not as a compromise, but because the architecture is
-      better without a middleman.
+      We build focused tools — for personal health, family finance,
+      developer productivity, and the AI-assisted engineering workflow we
+      use ourselves. Small surface per product, shipped by a small team.
     </p>
     <div class="hero__links">
       <a href="{{ '/products/' | relative_url }}" class="primary">Products</a>
@@ -27,27 +26,26 @@ description: Independent software studio building intelligent systems on top of 
     <div class="principles">
       <div class="principles__item">
         <div class="principles__num">01</div>
-        <h3>User-owned storage as infrastructure</h3>
-        <p>Google Drive, iCloud, local filesystem — not backup destinations,
-        but the primary data layer. We build structured schemas, sync
-        protocols, and indexed file-based data stores on top of storage
-        you already control.</p>
+        <h3>Contracts before code</h3>
+        <p>Schemas, interfaces, and architectural decisions are written
+        first; implementations follow. Every non-trivial choice lives as
+        an ADR in the project's <span class="mono">docs/adr/</span> —
+        future-us gets the <em>why</em>, not just the <em>what</em>.</p>
       </div>
       <div class="principles__item">
         <div class="principles__num">02</div>
-        <h3>Client-side intelligence</h3>
-        <p>AI runs in your session, on your machine, billed to your account.
-        The app is a renderer and logger. The intelligence layer produces
-        structured output that conforms to open schemas — no API proxy,
-        no round-trip to our servers.</p>
+        <h3>Small surface per product</h3>
+        <p>One thing done well beats five things half-done. Each product
+        is scoped so a small team can ship it and support it. Architecture
+        is chosen for the problem, not imposed by an org-wide playbook.</p>
       </div>
       <div class="principles__item">
         <div class="principles__num">03</div>
-        <h3>Open schema contracts</h3>
-        <p>Every data format is published, versioned, and MIT-licensed.
-        Any AI can produce plans the app renders. Any tool can read the
-        data you've generated. The interoperability layer is the product —
-        not the lock-in.</p>
+        <h3>AI-augmented, not AI-dependent</h3>
+        <p>We use AI assistants heavily in our own workflow, and we build
+        tooling (Forge, practitioner workflows) that assumes AI is part of
+        the toolkit. But the products degrade gracefully when the model
+        isn't there.</p>
       </div>
     </div>
   </div>
@@ -62,17 +60,16 @@ description: Independent software studio building intelligent systems on top of 
         <div class="product__mark product__mark--L">L</div>
         <div class="product__body">
           <h3>Longeviti</h3>
-          <div class="product__status">Live &middot; Android</div>
+          <div class="product__status">Rebuilding &middot; Waitlist open</div>
           <p>
-            Personal longevity tracking that turns blood work into adaptive
-            health plans. A structured data layer on Google Drive — meal
-            schemas, supplement schedules, coaching sessions — synced
-            bidirectionally with the app. Your AI assistant writes the
-            plans; the app renders and tracks against them.
+            Nutrition coaching, grounded in your health reports. A
+            practitioner-led platform for certified nutritionists and
+            their clients — blood work and tracking in, personalized meal
+            and supplement plans out. Rebuilding the client-facing
+            platform in 2026.
           </p>
           <div class="product__links">
-            <a href="https://longeviti.app">Website →</a>
-            <a href="https://github.com/arcanelabsio/longeviti-framework">Framework →</a>
+            <a href="https://longeviti.app">Waitlist →</a>
           </div>
         </div>
       </div>
@@ -82,9 +79,10 @@ description: Independent software studio building intelligent systems on top of 
           <h3>Vael</h3>
           <div class="product__status">In development</div>
           <p>
-            A unified view of your family's financial life — accounts,
-            expenses, net worth — built on local-first storage with no
-            server dependency.
+            A local-first family finance app for Indian households.
+            Encrypted client-side with AES-256-GCM; synced through Google
+            Drive as blind ciphertext. Families share a net-worth view
+            without surrendering data to anyone — including us.
           </p>
           <div class="product__links">
             <a href="mailto:support@arcanelabs.info?subject=Vael%20access%20request">Request access →</a>
@@ -100,17 +98,17 @@ description: Independent software studio building intelligent systems on top of 
     <div class="section__label">Open source</div>
 
     <div class="repos">
-      <a href="https://github.com/arcanelabsio/longeviti-framework" class="repo" target="_blank" rel="noopener">
-        <div class="repo__name">longeviti-framework</div>
-        <p class="repo__desc">Longevity tracking framework — AI skills for nutrition coaching, plan generation, and onboarding. Open schemas and validators.</p>
-      </a>
       <a href="https://github.com/arcanelabsio/drive_sync_flutter" class="repo" target="_blank" rel="noopener">
         <div class="repo__name">drive_sync_flutter</div>
-        <p class="repo__desc">Bidirectional file sync between device and Google Drive. SHA256 change detection, conflict resolution, nested folder support.</p>
+        <p class="repo__desc">Bidirectional Google Drive sync for Flutter apps. Three OAuth scope modes, SHA256 change detection, conflict resolution, nested folder support.</p>
       </a>
       <a href="https://github.com/arcanelabsio/forge" class="repo" target="_blank" rel="noopener">
         <div class="repo__name">forge</div>
         <p class="repo__desc">AI plugins for Copilot, Claude, Codex, and Gemini — engineering quality tools for discussions, issues, PRs, and commits.</p>
+      </a>
+      <a href="https://github.com/arcanelabsio/shellcraft" class="repo" target="_blank" rel="noopener">
+        <div class="repo__name">shellcraft</div>
+        <p class="repo__desc">macOS dev machine bootstrapper. Profile-based package selection and non-destructive dotfile management.</p>
       </a>
     </div>
 
