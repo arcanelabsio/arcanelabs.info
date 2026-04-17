@@ -5,13 +5,13 @@ description: >
   on top of user-owned storage — structured data layers, sync protocols, and
   AI that runs in your own session. No servers in between.
 
-url: "https://site.arcanelabs.io"
+url: "https://site.arcanelabs.info"
 baseurl: ""
 
 author:
   name: Arcane Labs
   email: apps@arcanelabs.info
-  url: https://site.arcanelabs.io
+  url: https://site.arcanelabs.info
   github: arcanelabsio
 
 # Vendor / organization — surfaced by jekyll-seo-tag as JSON-LD Organization.
@@ -29,7 +29,7 @@ social:
   name: Arcane Labs
   links:
     - https://github.com/arcanelabsio
-    - https://site.arcanelabs.io
+    - https://site.arcanelabs.info
 
 repository: arcanelabsio/arcanelabs.info
 
