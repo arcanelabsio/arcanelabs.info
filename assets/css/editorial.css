@@ -27,26 +27,6 @@
   --f-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-:root[data-theme="light"] {
-  color-scheme: light;
-  --bg: #f4f0e4;
-  --bg-2: #ebe6d4;
-  --subtle: #dfd8c0;
-  --border: #c0b697;
-  --fg: #1a1610;
-  --fg-mute: #4a4538;
-  --muted: #7a7464;
-
-  --mint: #0d6d45;
-  --mint-soft: #1b8d5e;
-  --amber: #a85416;
-  --amber-soft: #c26810;
-  --red: #a8302a;
-  --blue: #2b5ca8;
-
-  --grid-line: rgba(13, 109, 69, 0.04);
-}
-
 /* ---------- Base ---------- */
 html { background: var(--bg); }
 body.editorial {
@@ -80,10 +60,6 @@ body.editorial {
   overflow: hidden;
   transition: background-color 240ms ease, border-color 240ms ease;
 }
-:root[data-theme="light"] .lh {
-  box-shadow: 0 16px 40px -16px rgba(60, 40, 16, 0.18);
-}
-
 /* Terminal chrome bar */
 .lh__chrome {
   display: flex;
@@ -124,9 +100,6 @@ a { color: inherit; }
   border-bottom: 1px dotted rgba(0, 240, 160, 0.4);
   padding-bottom: 1px;
   transition: color 140ms ease, border-color 140ms ease;
-}
-:root[data-theme="light"] .lh a {
-  border-bottom-color: rgba(13, 109, 69, 0.4);
 }
 .lh a:hover { color: var(--mint-soft); border-bottom-color: var(--mint); }
 
@@ -176,32 +149,6 @@ a { color: inherit; }
   border-right: 1px solid var(--border);
 }
 .lh__nav-brand:hover { color: var(--mint-soft); }
-
-.lh__theme-toggle {
-  background: var(--bg);
-  color: var(--fg-mute);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 5px 12px;
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  line-height: 1;
-  transition: color 140ms ease, border-color 140ms ease, background 140ms ease;
-}
-.lh__theme-toggle:hover {
-  color: var(--mint);
-  border-color: var(--mint);
-}
-.lh__theme-toggle svg { width: 12px; height: 12px; display: block; color: currentColor; }
-.lh__theme-toggle .icon-sun { display: none; }
-.lh__theme-toggle .icon-moon { display: block; }
-:root[data-theme="light"] .lh__theme-toggle .icon-sun { display: block; }
-:root[data-theme="light"] .lh__theme-toggle .icon-moon { display: none; }
 
 /* ---------- Hero / name ---------- */
 .lh__greeting {
@@ -393,6 +340,25 @@ a { color: inherit; }
   border-bottom: 1px dotted rgba(0, 240, 160, 0.4);
 }
 
+/* Linkable list — whole card is clickable */
+.lh__list--linkable li { padding: 0; }
+.lh__list--linkable li .lh__card-link {
+  display: block;
+  padding: 14px 16px;
+  color: inherit;
+  border-bottom: 0;
+  text-decoration: none;
+}
+.lh__list--linkable li .lh__card-link:hover { color: inherit; border-bottom: 0; }
+.lh__list--linkable li .lh__card-link strong {
+  color: var(--fg);
+  transition: color 140ms ease;
+}
+.lh__list--linkable li:hover .lh__card-link strong { color: var(--mint); }
+.lh__list--linkable li .lh__card-link time {
+  color: var(--muted);
+}
+
 /* Prose lists inside posts */
 .lh .prose ul {
   list-style: none;
@@ -443,6 +409,14 @@ a { color: inherit; }
 .lh__section:first-of-type { margin-top: 0; }
 
 /* ---------- Home-specific ASCII banner ---------- */
+.lh__hero {
+  margin: 0 0 clamp(12px, 2vw, 20px);
+  font-weight: 400;
+  font-size: inherit;
+  line-height: 1;
+}
+.lh__hero .lh__ascii { margin: 0; }
+
 .lh__ascii {
   display: block;
   white-space: pre;
@@ -450,7 +424,7 @@ a { color: inherit; }
   color: var(--mint);
   font-size: clamp(6px, 1.1vw, 10px);
   line-height: 1.1;
-  margin: 16px 0 clamp(24px, 3vw, 40px);
+  margin: 0 0 clamp(24px, 3vw, 40px);
   overflow-x: auto;
   user-select: none;
 }
@@ -553,6 +527,173 @@ a { color: inherit; }
 }
 .lh__post-meta time { font-variant-numeric: tabular-nums lining-nums; }
 .lh__post-meta::before { content: "// "; color: var(--muted); }
+
+/* ---------- Post (file-viewer envelope) ---------- */
+.lh__post {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 0 clamp(32px, 5vw, 48px);
+}
+.lh__post__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--subtle);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--fg-mute);
+}
+.lh__post__crumb::before { content: "📄  "; opacity: 0.7; }
+.lh__post__date {
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--amber);
+}
+.lh__post__body {
+  padding: clamp(24px, 4vw, 48px) clamp(20px, 3.5vw, 44px);
+}
+.lh__post__title {
+  font-family: var(--f-mono);
+  font-weight: 700;
+  font-size: clamp(24px, 3.8vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin: 0 0 10px;
+}
+.lh__post__title::before {
+  content: "# ";
+  color: var(--amber);
+  opacity: 0.6;
+}
+.lh__post__sub {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--fg-mute);
+  margin: 0 0 clamp(24px, 3vw, 36px);
+  padding: 0 10px 0 14px;
+  border-left: 3px solid var(--mint);
+  max-width: none;
+  line-height: 1.55;
+}
+.lh__post__sub::before { content: "> "; color: var(--mint); }
+
+.lh__post__content {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--fg);
+}
+.lh__post__content p { max-width: none; }
+.lh__post__content > p:first-child,
+.lh__post__content > h2:first-child,
+.lh__post__content > h3:first-child { margin-top: 0; }
+.lh__post__content > :last-child { margin-bottom: 0; }
+.lh__post__content h2 {
+  font-family: var(--f-mono);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.005em;
+  color: var(--fg);
+  text-transform: none;
+  margin: 2.2em 0 0.7em;
+}
+.lh__post__content h2::before { content: "## "; color: var(--amber); opacity: 0.6; }
+.lh__post__content h3 {
+  font-family: var(--f-mono);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--fg);
+  margin: 1.8em 0 0.5em;
+}
+.lh__post__content h3::before { content: "### "; color: var(--amber); opacity: 0.5; }
+
+.lh__post__content pre,
+.lh__post__content .highlight {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--mint);
+  padding: 14px 18px;
+  overflow-x: auto;
+  border-radius: 0 4px 4px 0;
+  margin: 1.4em 0;
+  color: var(--fg);
+}
+.lh__post__content .highlighter-rouge {
+  background: none;
+  padding: 0;
+  border: 0;
+  margin: 1.4em 0;
+}
+.lh__post__content .highlighter-rouge .highlight { margin: 0; }
+.lh__post__content pre code,
+.lh__post__content .highlight code {
+  background: none;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  font-size: inherit;
+}
+.lh__post__content ul,
+.lh__post__content ol {
+  margin: 1em 0;
+  padding-left: 0;
+  list-style: none;
+}
+.lh__post__content ul li,
+.lh__post__content ol li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 4px;
+  padding: 0 0 0.45em;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  align-items: baseline;
+  max-width: none;
+}
+.lh__post__content ul li:hover,
+.lh__post__content ol li:hover { transform: none; border: 0; }
+.lh__post__content ul li::before {
+  content: "▸";
+  color: var(--mint);
+  font-family: var(--f-mono);
+}
+.lh__post__content ol { counter-reset: step; }
+.lh__post__content ol li {
+  counter-increment: step;
+}
+.lh__post__content ol li::before {
+  content: "[" counter(step) "]";
+  color: var(--mint);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Syntax-highlighted tokens (Rouge) */
+.lh__post__content .highlight .na { color: var(--amber); }
+.lh__post__content .highlight .s, .lh__post__content .highlight .s1, .lh__post__content .highlight .s2 { color: var(--mint-soft); }
+.lh__post__content .highlight .pi { color: var(--muted); }
+.lh__post__content .highlight .nt { color: var(--amber); }
+.lh__post__content .highlight .c, .lh__post__content .highlight .c1 { color: var(--muted); font-style: italic; }
+
+/* ---------- sr-only utility ---------- */
+.lh__sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 /* ---------- Back-link ---------- */
 .lh__backlink {

@@ -1,23 +1,24 @@
 ---
 layout: editorial
 ---
-<article>
-  <header class="lh__section">
-    <h1 class="lh__name">{{ page.title }}</h1>
-    {% if page.description %}
-      <p class="lh__greeting">{{ page.description }}</p>
-    {% endif %}
-    <p class="lh__post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-    </p>
-    <hr class="lh__rule" />
-  </header>
-
-  <div class="lh__section prose">
-    {{ content }}
+<article class="lh__post">
+  <div class="lh__post__head">
+    <span class="lh__post__crumb">writing / {{ page.slug | default: page.url | split: "/" | last }}.md</span>
+    <time class="lh__post__date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
   </div>
 
-  <p class="lh__backlink">
-    <a href="{{ '/writing/' | relative_url }}">~/writing</a>
-  </p>
+  <div class="lh__post__body">
+    <h1 class="lh__post__title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="lh__post__sub">{{ page.description }}</p>
+    {% endif %}
+
+    <div class="lh__post__content">
+      {{ content }}
+    </div>
+  </div>
 </article>
+
+<p class="lh__backlink">
+  <a href="{{ '/writing/' | relative_url }}">~/writing</a>
+</p>

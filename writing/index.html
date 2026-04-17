@@ -5,8 +5,9 @@ description: "Notes, articles, and user guides from Arcane Labs."
 permalink: /writing/
 ---
 
+<h1 class="lh__sr-only">Writing</h1>
+
 <section class="lh__section">
-  <h1 class="lh__name">Writing.</h1>
   <p class="lh__greeting">Notes, articles, and user guides.</p>
   <hr class="lh__rule" />
   <p>
@@ -17,14 +18,16 @@ permalink: /writing/
 </section>
 
 <section class="lh__section">
-  <h2>Posts</h2>
+  <div class="lh__sep">── <strong>POSTS</strong> ──────────────────────────────────────────────────</div>
   {% if site.posts.size > 0 %}
-    <ul class="lh__list">
+    <ul class="lh__list lh__list--linkable">
       {% for post in site.posts %}
         <li>
-          <a href="{{ post.url | relative_url }}"><strong>{{ post.title }}</strong></a>{% if post.description %} — {{ post.description }}{% endif %}
-          <br>
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+          <a class="lh__card-link" href="{{ post.url | relative_url }}">
+            <strong>{{ post.title }}</strong>{% if post.description %} — {{ post.description }}{% endif %}
+            <br>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+          </a>
         </li>
       {% endfor %}
     </ul>

@@ -3,22 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080b10" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#f4f0e4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#080b10">
+  <meta name="color-scheme" content="dark">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/editorial.css' | relative_url }}">
-  <script>
-    (function () {
-      try {
-        var stored = localStorage.getItem('arcanelabs-theme');
-        var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-        var theme = stored || (prefersLight ? 'light' : 'dark');
-        document.documentElement.setAttribute('data-theme', theme);
-      } catch (e) {}
-    })();
-  </script>
   {% seo %}
 </head>
 <body class="editorial">
@@ -37,6 +27,5 @@
       {% include editorial-footer.html %}
     </div>
   </div>
-  <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
 </body>
 </html>
