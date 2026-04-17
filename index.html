@@ -1,165 +1,273 @@
 ---
 layout: default
-title: "Software built for reuse"
-description: "A solo builder's portfolio — small tools, libraries, and apps built around one principle: minimum complexity, maximum flexibility, reuse-first."
+title: "Arcane Labs"
+description: "An independent software studio building privacy-first, local-first software. Your data stays yours."
 ---
 
-<section class="hero">
-  <div class="wrap">
-    <h1>Software built for reuse.</h1>
-    <p class="hero__sub">
-      Small tools, libraries, and apps from a single builder. Every
-      project starts from one principle: solve common problems with the
-      minimum complexity needed and the maximum flexibility to adapt.
-      When an idea graduates past ideation, it ships here.
-    </p>
-    <div class="hero__links">
-      <a href="#projects" class="primary">Projects</a>
-      <a href="https://github.com/arcanelabsio" target="_blank" rel="noopener">GitHub</a>
-    </div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap');
+
+  /* Homepage owns its own nav + footer; suppress global chrome here only */
+  body > header.nav, body > footer.footer { display: none !important; }
+
+  .lh {
+    --paper: #fdfaf3;
+    --ink: #1f1d1a;
+    --ink-mute: #6a6760;
+    --rule: #1f1d1a;
+    --link: #1f1d1a;
+    --link-hover: #a44815;
+
+    --f-serif: 'Source Serif 4', Iowan Old Style, 'Palatino Linotype', Georgia, serif;
+    --f-sans: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-serif);
+    font-size: 18px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+  .lh *, .lh *::before, .lh *::after { box-sizing: border-box; }
+  .lh::before {
+    content: "";
+    position: fixed; inset: 0;
+    background: var(--paper);
+    z-index: -1;
+  }
+
+  .lh__page {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: clamp(36px, 8vw, 88px) clamp(22px, 5vw, 32px) clamp(48px, 10vw, 112px);
+  }
+
+  /* Nav */
+  .lh__nav {
+    font-family: var(--f-sans);
+    font-size: 14px;
+    color: var(--ink-mute);
+    margin-bottom: clamp(56px, 10vw, 96px);
+    letter-spacing: 0.005em;
+  }
+  .lh__nav a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 140ms ease, color 140ms ease;
+    padding-bottom: 1px;
+  }
+  .lh__nav a:hover {
+    color: var(--link-hover);
+    border-color: var(--link-hover);
+  }
+  .lh__nav .dot { color: var(--ink-mute); padding: 0 6px; }
+
+  /* Headline */
+  .lh__greeting {
+    font-family: var(--f-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--ink-mute);
+    margin: 12px 0 0;
+  }
+  .lh__name {
+    font-family: var(--f-serif);
+    font-weight: 500;
+    font-size: clamp(44px, 7vw, 60px);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .lh__name em { font-style: italic; font-weight: 400; }
+
+  /* Rule */
+  .lh__rule {
+    border: 0;
+    border-top: 2px solid var(--rule);
+    margin: clamp(28px, 5vw, 40px) 0 clamp(28px, 5vw, 40px);
+    width: 100%;
+    height: 0;
+  }
+  .lh__rule--hair {
+    border-top: 1px solid rgba(31, 29, 26, 0.18);
+    margin: clamp(40px, 6vw, 56px) 0;
+  }
+
+  /* Body prose */
+  .lh p {
+    margin: 0 0 1.1em;
+    max-width: 62ch;
+  }
+  .lh p:last-child { margin-bottom: 0; }
+  .lh em { font-style: italic; }
+  .lh strong { font-weight: 600; }
+
+  .lh a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(31, 29, 26, 0.3);
+    transition: color 140ms ease, text-decoration-color 140ms ease;
+  }
+  .lh a:hover {
+    color: var(--link-hover);
+    text-decoration-color: var(--link-hover);
+    text-decoration-thickness: 2px;
+  }
+
+  /* Section headings */
+  .lh h2 {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0 0 22px;
+  }
+
+  /* Project list */
+  .lh__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .lh__list li {
+    margin: 0 0 26px;
+    line-height: 1.58;
+  }
+  .lh__list li:last-child { margin-bottom: 0; }
+  .lh__list li strong { font-weight: 600; }
+  .lh__list li em {
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: 0.95em;
+  }
+
+  /* Sections */
+  .lh__section { margin: clamp(40px, 6vw, 56px) 0; }
+  .lh__section:first-of-type { margin-top: 0; }
+
+  /* Footer */
+  .lh__footer {
+    margin-top: clamp(48px, 8vw, 80px);
+    padding-top: clamp(24px, 4vw, 32px);
+    border-top: 2px solid var(--rule);
+    font-family: var(--f-sans);
+    font-size: 14px;
+    color: var(--ink-mute);
+  }
+  .lh__footer a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(31, 29, 26, 0.25);
+  }
+  .lh__footer a:hover {
+    color: var(--link-hover);
+    text-decoration-color: var(--link-hover);
+  }
+  .lh__footer .dot { padding: 0 6px; color: var(--ink-mute); }
+
+  /* Focus */
+  .lh a:focus-visible {
+    outline: 2px solid var(--link-hover);
+    outline-offset: 3px;
+    text-decoration-color: var(--link-hover);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .lh *, .lh *::before, .lh *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Narrow viewports */
+  @media (max-width: 520px) {
+    .lh { font-size: 17px; }
+    .lh__nav { font-size: 13px; }
+    .lh__nav .dot { padding: 0 4px; }
+    .lh__footer .dot { padding: 0 4px; }
+  }
+</style>
+
+<div class="lh">
+  <div class="lh__page">
+
+    <nav class="lh__nav" aria-label="Primary">
+      <a href="/">Home</a><span class="dot">·</span><a href="#projects">Projects</a><span class="dot">·</span><a href="#contact">Contact</a>
+    </nav>
+
+    <section class="lh__section">
+      <h1 class="lh__name">Arcane Labs.</h1>
+      <p class="lh__greeting">Privacy-first, local-first software.</p>
+      <hr class="lh__rule" />
+      <p>
+        Arcane Labs is an independent software studio building
+        privacy-first, local-first applications and developer tools.
+        The label exists to give considered, small software a home
+        where it can be maintained, released, and used.
+      </p>
+      <p>
+        Everything here is built around three rules: <em>your data
+        should stay yours</em>, <em>the best features don't need a
+        server</em>, and <em>complexity should live in the
+        architecture</em> — not in the user's face.
+      </p>
+      <p>
+        Projects graduate into this catalog once they're maintained,
+        release-ready, and externally consumable — as an app, a
+        library, or a tool anyone can install.
+      </p>
+    </section>
+
+    <section class="lh__section" id="projects">
+      <h2>Projects</h2>
+      <ul class="lh__list">
+        <li>
+          <a href="https://github.com/arcanelabsio/drive_sync_flutter"><strong>drive_sync_flutter</strong></a> —
+          a Google Drive sync library for Flutter. Published on
+          <a href="https://pub.dev/packages/drive_sync_flutter">pub.dev</a>.
+          <em>Shipping.</em>
+        </li>
+        <li>
+          <a href="https://github.com/arcanelabsio/forge"><strong>forge</strong></a> —
+          one CLI, four AI coding assistants. Published on
+          <a href="https://www.npmjs.com/package/forge-ai-assist">npm</a>.
+          <em>Shipping.</em>
+        </li>
+        <li>
+          <a href="https://github.com/arcanelabsio/shellcraft"><strong>shellcraft</strong></a> —
+          a macOS developer-machine bootstrapper.
+          <em>Shipping.</em>
+        </li>
+        <li>
+          <a href="https://longeviti.app"><strong>Longeviti</strong></a> —
+          a nutrition coaching platform.
+          <em>Active build.</em>
+        </li>
+        <li>
+          <strong>Vael</strong> —
+          a local-first personal finance app.
+          <em>Active build.</em>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="lh__footer" id="contact">
+      <p>
+        Bengaluru, India<span class="dot">·</span><a href="https://github.com/arcanelabsio">GitHub</a><span class="dot">·</span><a href="mailto:hello@arcanelabs.info">hello@arcanelabs.info</a>
+      </p>
+    </footer>
+
   </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section__label">How I build</div>
-
-    <div class="principles">
-      <div class="principles__item">
-        <div class="principles__num">01</div>
-        <h3>Contracts before code</h3>
-        <p>Schemas, interfaces, and architectural decisions are written
-        first; implementations follow. Every non-trivial choice lives as
-        an ADR in the project's <span class="mono">docs/adr/</span> —
-        future-me gets the <em>why</em>, not just the <em>what</em>.</p>
-      </div>
-      <div class="principles__item">
-        <div class="principles__num">02</div>
-        <h3>Small surface per project</h3>
-        <p>One thing done well beats five things half-done. Each project
-        is scoped so a single builder can ship it and support it.
-        Architecture is chosen for the problem, not imposed by an
-        org-wide playbook.</p>
-      </div>
-      <div class="principles__item">
-        <div class="principles__num">03</div>
-        <h3>AI-augmented, not AI-dependent</h3>
-        <p>I use AI assistants heavily in my own workflow, and I build
-        tooling (Forge, practitioner workflows) that assumes AI is part
-        of the toolkit. But the products degrade gracefully when the
-        model isn't there.</p>
-      </div>
-      <div class="principles__item">
-        <div class="principles__num">04</div>
-        <h3>Reuse before rebuild</h3>
-        <p>Every new project is scouted for what already exists in the
-        portfolio. <span class="mono">drive_sync_flutter</span> is the
-        shape of that bet — one library that solves Drive sync once,
-        used by every app that needs it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects" class="section" style="background: var(--bg-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
-  <div class="wrap">
-    <div class="section__label">Shipping</div>
-
-    <div class="repos">
-      <a href="https://github.com/arcanelabsio/drive_sync_flutter" class="repo" target="_blank" rel="noopener">
-        <div class="repo__name">drive_sync_flutter</div>
-        <p class="repo__desc">Bidirectional Google Drive sync for Flutter apps. Three OAuth scope modes, SHA256 change detection, conflict resolution, nested folder support. Published on pub.dev.</p>
-      </a>
-      <a href="https://github.com/arcanelabsio/forge" class="repo" target="_blank" rel="noopener">
-        <div class="repo__name">forge</div>
-        <p class="repo__desc">One CLI, four AI assistants. Installs engineering-quality plugins into Copilot, Claude, Codex, and Gemini — discussion analysis, PR review, commit coaching. Published on npm.</p>
-      </a>
-      <a href="https://github.com/arcanelabsio/shellcraft" class="repo" target="_blank" rel="noopener">
-        <div class="repo__name">shellcraft</div>
-        <p class="repo__desc">macOS dev-machine bootstrapper. Profile-based package selection with preview-first execution and managed-block dotfile adoption — rebuild your workstation in an hour, keep your customizations.</p>
-      </a>
-    </div>
-
-    <p style="margin-top: var(--sp-4);">
-      <a href="https://github.com/arcanelabsio" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 600;">
-        All repositories →
-      </a>
-    </p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section__label">In development</div>
-
-    <div class="products">
-      <div class="product">
-        <div class="product__mark product__mark--L">L</div>
-        <div class="product__body">
-          <h3>Longeviti</h3>
-          <div class="product__status">Active build</div>
-          <p>
-            Nutrition coaching grounded in your health reports.
-            Certified practitioners review blood work, tracking, and
-            daily logs, and deliver personalized meal and supplement
-            plans through a modern app. Built jointly with a practicing
-            nutritionist.
-          </p>
-          <p>
-            <span class="text-faint text-sm">Flutter (client) &middot; Practitioner web app &middot; Google Drive data layer &middot; Claude Code skills (ELARA / ATLAS)</span>
-          </p>
-          <div class="product__links">
-            <a href="https://longeviti.app">longeviti.app →</a>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product__mark product__mark--V">V</div>
-        <div class="product__body">
-          <h3>Vael</h3>
-          <div class="product__status">Active build</div>
-          <p>
-            A local-first family finance app for Indian households —
-            accounts, expenses, net worth, shared across family members
-            without surrendering data to anyone. Every byte of financial
-            data is encrypted client-side with AES-256-GCM before it
-            leaves your device; Google Drive is used as blind ciphertext
-            transport. No servers, no subscriptions.
-          </p>
-          <p>
-            <span class="text-faint text-sm">Flutter &middot; Client-side AES-GCM &middot; Drive-as-blind-transport &middot; Zero-server</span>
-          </p>
-          <p class="text-faint text-sm">
-            Source currently private. For access or collaboration, email
-            <a href="mailto:support@arcanelabs.info?subject=Vael%20access%20request">support@arcanelabs.info</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background: var(--bg-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
-  <div class="wrap">
-    <div class="section__label">About</div>
-    <h2 style="margin-top: 0;">Built by Ajit Gunturi.</h2>
-    <p style="max-width: 60ch;">
-      R&amp;D engineer with a platform and control-plane background.
-      ISB Emerging Leaders alum. Arcane Labs is where I publish ideas
-      that pass ideation — a portfolio built for reuse, not a company
-      raising money.
-    </p>
-    <p style="max-width: 60ch;">
-      Find me on <a href="https://github.com/ajitgunturi">GitHub</a>
-      or <a href="https://www.linkedin.com/in/ajitkumargunturi/">LinkedIn</a>.
-    </p>
-  </div>
-</section>
-
-<section class="cta-banner">
-  <div class="wrap">
-    <h2>Get in touch</h2>
-    <p>Questions, partnerships, or just want to say hello.</p>
-    <a href="mailto:hello@arcanelabs.info" style="font-weight: 600; font-size: 14px;">hello@arcanelabs.info →</a>
-  </div>
-</section>
+</div>

@@ -1,10 +1,10 @@
 title: Arcane Labs
-tagline: Software built for reuse — a solo builder's portfolio
+tagline: Privacy-first, local-first software
 description: >
-  Arcane Labs is where Ajit Gunturi publishes software that graduates past
-  ideation. Small tools, libraries, and apps built around one principle:
-  solve common problems with the minimum complexity needed and the maximum
-  flexibility to adapt.
+  Arcane Labs is an independent software studio building privacy-first,
+  local-first applications and developer tools. Your data stays yours.
+  The best features don't need a server. Complexity belongs in the
+  architecture, not in the user's face.
 
 url: "https://arcanelabs.info"
 baseurl: ""
