@@ -1,0 +1,76 @@
+title: Arcane Labs
+tagline: Privacy-first tools for personal data sovereignty
+description: >
+  Arcane Labs is an independent software studio building open, privacy-first
+  tools. Your data stays yours — on your device, in your cloud storage,
+  under your control. We build the intelligence layer; you own the data.
+
+url: "https://site.arcanelabs.io"
+baseurl: ""
+
+author:
+  name: Arcane Labs
+  email: apps@arcanelabs.info
+  url: https://site.arcanelabs.io
+  github: arcanelabsio
+
+# Vendor / organization — surfaced by jekyll-seo-tag as JSON-LD Organization.
+organization:
+  name: Arcane Labs
+  url: https://github.com/arcanelabsio
+  email: apps@arcanelabs.info
+
+# Social — consumed by jekyll-seo-tag for Twitter/OG cards.
+twitter:
+  username: arcanelabsio
+  card: summary_large_image
+
+social:
+  name: Arcane Labs
+  links:
+    - https://github.com/arcanelabsio
+    - https://site.arcanelabs.io
+
+repository: arcanelabsio/arcanelabs.info
+
+# No pre-built theme — we ship our own CSS to mirror the Longeviti design tokens.
+theme: null
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-github-metadata
+  - jekyll-feed
+  - jekyll-redirect-from
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+  hard_wrap: false
+
+permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .jekyll-cache
+
+# Top nav links.
+nav:
+  - title: Products
+    url: /products/
+  - title: Open Source
+    url: https://github.com/arcanelabsio
+    external: true
+  - title: Contact
+    url: /contact/
