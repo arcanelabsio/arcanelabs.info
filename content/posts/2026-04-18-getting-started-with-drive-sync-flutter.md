@@ -1,17 +1,30 @@
 ---
 title: "Getting started with drive_sync_flutter"
-description: "Zero to a working Google Drive sync in about ten minutes."
+description: "Zero to a working Google Drive sync in about ten minutes. (Legacy — drive_sync_flutter is frozen; new code should use cloud_sync_drive.)"
 date: 2026-04-18
 ---
+
+> **Heads up — this guide covers the frozen library.**
+> `drive_sync_flutter` is frozen at `1.2.0` and no longer receives
+> new releases. New code should use
+> [`cloud_sync_core`](https://pub.dev/packages/cloud_sync_core) +
+> [`cloud_sync_drive`](https://pub.dev/packages/cloud_sync_drive)
+> from the [`cloud_sync`](/projects/cloud_sync) monorepo, which
+> splits the sync engine into a storage-agnostic core and ships
+> adapters for Drive, S3, and Box. The concepts below still apply
+> — only the import paths and a few class names changed. See the
+> [project page](/projects/drive_sync_flutter) for the migration
+> mapping.
 
 `drive_sync_flutter` is a Dart package that adds bidirectional Google
 Drive sync to a Flutter app — in both directions, with SHA-256 change
 detection and conflict resolution. This guide takes you from an empty
-project to a working sync in about ten minutes.
+project to a working sync in about ten minutes, using the last
+published version, `1.2.0`.
 
 The library is [published on
-pub.dev](https://pub.dev/packages/drive_sync_flutter) at v1.2.0 and
-lives at [arcanelabsio/drive_sync_flutter](https://github.com/arcanelabsio/drive_sync_flutter)
+pub.dev](https://pub.dev/packages/drive_sync_flutter) at v1.2.0
+(final) and lives at [arcanelabsio/drive_sync_flutter](https://github.com/arcanelabsio/drive_sync_flutter)
 on GitHub.
 
 ## Install
@@ -142,14 +155,25 @@ you need to preserve both, use `askUser` and fan out in the UI.
 
 ## What's next
 
+- **Move to `cloud_sync_drive`** — the active successor. Same
+  scope modes, same conflict strategies, but the sync engine
+  lives in [`cloud_sync_core`](https://pub.dev/packages/cloud_sync_core)
+  and the Drive-specific code in
+  [`cloud_sync_drive`](https://pub.dev/packages/cloud_sync_drive).
+  Migration is a one-to-one class rename: `DriveSyncClient` →
+  `SyncClient`, `GoogleDriveAdapter` → `DriveAdapter`,
+  `GoogleAuthClient` → `DriveAuthClient`, `SandboxValidator` →
+  `PathValidator`. See the
+  [`drive_sync_flutter` project page](/projects/drive_sync_flutter)
+  for the full mapping.
 - [Package on pub.dev](https://pub.dev/packages/drive_sync_flutter) —
-  version history and API reference.
+  frozen at v1.2.0, kept online for existing consumers.
 - [Source on GitHub](https://github.com/arcanelabsio/drive_sync_flutter) —
-  full README with a detailed scope-mode comparison and the CASA
-  trade-off discussion.
+  archival README with the detailed scope-mode comparison and
+  CASA trade-off discussion.
 - [CHANGELOG](https://github.com/arcanelabsio/drive_sync_flutter/blob/main/CHANGELOG.md) —
   what changed in each release.
 
-More guides on the library's other features — custom `DriveAdapter`
-implementations for non-Google backends, path-traversal protection,
-and manifest inspection — soon.
+New guides covering `cloud_sync_core`, the S3 and Box adapters,
+and custom `StorageAdapter` implementations are in the pipeline
+under [`cloud_sync`](/projects/cloud_sync).

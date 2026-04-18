@@ -21,9 +21,14 @@ a tool anyone can install.
 
 ## The catalog
 
-- [**drive_sync_flutter**](/projects/drive_sync_flutter) — a Google
-  Drive sync library for Flutter. Published on
-  [pub.dev](https://pub.dev/packages/drive_sync_flutter). *Shipping.*
+- [**cloud_sync**](/projects/cloud_sync) — bidirectional file sync
+  for Dart and Flutter, across Google Drive, S3, and Box. Four
+  packages on
+  [pub.dev](https://pub.dev/publishers/arcanelabs.info/packages).
+  *Shipping.*
+- [**drive_sync_flutter**](/projects/drive_sync_flutter) — the
+  original Google-Drive-only predecessor to `cloud_sync`.
+  *Frozen at v1.2.0.*
 - [**forge**](/projects/forge) — one CLI, four AI coding assistants.
   Published on [npm](https://www.npmjs.com/package/forge-ai-assist).
   *Shipping.*
