@@ -42,4 +42,6 @@ Bengaluru, Karnataka, India.
 ## Contact
 
 General inquiries: [hello@arcanelabs.info](mailto:hello@arcanelabs.info).
-See the [contact page](/contact) for other channels.
+Social: [Instagram @labs.arcane](https://www.instagram.com/labs.arcane/)
+and [X @LabsArcane](https://x.com/LabsArcane). See the
+[contact page](/contact) for other channels.

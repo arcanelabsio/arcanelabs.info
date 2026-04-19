@@ -7,6 +7,11 @@ export function Footer() {
         <span className="amber">[SOURCE]</span>{" "}
         <a href="https://github.com/arcanelabsio">github.com/arcanelabsio</a>
         <span className="dot">·</span>
+        <span className="amber">[SOCIAL]</span>{" "}
+        <a href="https://www.instagram.com/labs.arcane/">@labs.arcane</a>
+        <span className="dot">·</span>
+        <a href="https://x.com/LabsArcane">@LabsArcane</a>
+        <span className="dot">·</span>
         <span className="amber">[CONTACT]</span>{" "}
         <a href="mailto:hello@arcanelabs.info">hello@arcanelabs.info</a>
       </p>

@@ -21,6 +21,10 @@ if you'd prefer to be specific.
   Data requests, deletion, or privacy policy questions.
 - **Open source** — [github.com/arcanelabsio](https://github.com/arcanelabsio).
   Bug reports, feature requests, contributions.
+- **Instagram** — [@labs.arcane](https://www.instagram.com/labs.arcane/).
+  Studio updates, launches, and product snapshots.
+- **X** — [@LabsArcane](https://x.com/LabsArcane).
+  Release notes, technical updates, and announcements.
 
 ## Location
 
