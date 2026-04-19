@@ -149,6 +149,9 @@ a { color: inherit; }
   border-right: 1px solid var(--border);
 }
 .lh__nav-brand:hover { color: var(--mint-soft); }
+.lh__nav-header {
+  display: contents;
+}
 
 /* ---------- Hero / name ---------- */
 .lh__greeting {
@@ -520,6 +523,8 @@ a { color: inherit; }
 .lh__footer .mint { color: var(--mint); font-weight: 500; }
 .lh__footer .amber { color: var(--amber); font-weight: 500; }
 .lh__footer .dot { padding: 0 8px; color: var(--muted); }
+.lh__footer a svg { margin-right: 4px; opacity: 0.7; transition: opacity 140ms ease; }
+.lh__footer a:hover svg { opacity: 1; }
 
 /* ---------- Post meta ---------- */
 .lh__post-meta {
@@ -774,21 +779,185 @@ a { color: inherit; }
   }
 }
 
+/* ---------- Mobile hamburger nav ---------- */
+.lh__nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--fg-mute);
+  font-family: var(--f-mono);
+  font-size: 18px;
+  padding: 4px 10px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+.lh__nav-toggle:hover { color: var(--mint); border-color: var(--mint); }
+
+/* ---------- Tablet viewports ---------- */
+@media (max-width: 768px) {
+  body.editorial { padding: 12px 10px; }
+  .lh__page { padding: clamp(20px, 3vw, 36px); }
+  .lh__ascii { font-size: clamp(5px, 0.9vw, 8px); }
+
+  /* Footer: wrap items naturally */
+  .lh__footer p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 0;
+    align-items: center;
+  }
+
+  /* Separator lines: clip overflow */
+  .lh__sep {
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+}
+
 /* ---------- Narrow viewports ---------- */
 @media (max-width: 640px) {
-  body.editorial { padding: 10px 8px; }
+  body.editorial { padding: 8px 6px; }
   .lh { border-radius: 6px; }
   .lh__chrome { padding: 10px 12px; }
   .lh__dot { width: 10px; height: 10px; }
   .lh__chrome-title { font-size: 10px; }
-  .lh__page { padding: 20px 18px; }
-  .lh__nav { padding: 10px 12px; font-size: 12px; flex-direction: column; align-items: flex-start; }
-  .lh__nav-links { gap: 12px; width: 100%; }
-  .lh__theme-toggle { align-self: flex-end; font-size: 10px; padding: 4px 10px; }
-  .lh__name { font-size: 28px; }
+  .lh__page { padding: 18px 14px; }
+
+  /* -- Nav: hamburger collapse -- */
+  .lh__nav {
+    padding: 10px 12px;
+    font-size: 13px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+  .lh__nav-brand {
+    border-right: 0;
+    padding-right: 0;
+    margin-right: 0;
+  }
+  .lh__nav-toggle { display: block; }
+  .lh__nav-links.is-open { display: flex; }
+  .lh__nav-links .dot { display: none; }
+  .lh__nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 2px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .lh__nav-links a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background 140ms ease, color 140ms ease;
+  }
+  .lh__nav-links a:hover,
+  .lh__nav-links a.is-current {
+    background: var(--subtle);
+  }
+  /* Wrap nav for toggle layout */
+  .lh__nav { flex-wrap: wrap; }
+  .lh__nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* -- Hero / name -- */
+  .lh__name { font-size: clamp(22px, 7vw, 28px); }
+
+  /* -- ASCII art: hide on mobile — doesn't scale readably -- */
+  .lh__ascii {
+    display: none;
+  }
+
+  /* -- Post head: stack on mobile -- */
+  .lh__post__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  /* -- Post body: tighter padding -- */
+  .lh__post__body {
+    padding: 18px 14px;
+  }
+  .lh__post__title {
+    font-size: clamp(20px, 5.5vw, 28px);
+  }
+
+  /* -- Meta grid: stack -- */
   .lh__meta { grid-template-columns: 1fr; gap: 2px 0; }
   .lh__meta dt { margin-top: 8px; }
+
+  /* -- Footer: fully stacked -- */
+  .lh__footer p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .lh__footer .dot { display: none; }
+  .lh__footer p + p { margin-top: 12px; }
+
+  /* -- Separator overflow -- */
+  .lh__sep {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: 11px;
+  }
+
+  /* -- Prose lists -- */
   .lh .prose ul li, .lh .prose ol li { grid-template-columns: 20px 1fr; }
+
+  /* -- Rules / principles -- */
+  .lh__rules li {
+    grid-template-columns: 28px 1fr;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  /* -- Prompt lines -- */
+  .lh__prompt { font-size: 12px; }
+  .lh__output { font-size: 11.5px; margin-left: 12px; }
+
+  /* -- Section spacing -- */
+  .lh__section { margin: clamp(20px, 4vw, 36px) 0; }
+
+  /* -- Greeting -- */
+  .lh__greeting { font-size: 12px; }
+
+  /* -- Blockquote -- */
+  .lh blockquote { padding: 8px 12px; }
+
+  /* -- Code blocks -- */
+  .lh pre { padding: 12px 14px; font-size: 12px; }
+  .lh__post__content pre,
+  .lh__post__content .highlight {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
+
+/* ---------- Very narrow (< 380px) ---------- */
+@media (max-width: 380px) {
+  body.editorial { padding: 4px; }
+  .lh { border-radius: 4px; }
+  .lh__page { padding: 14px 10px; }
+  .lh__ascii { display: none; }
+  .lh__name { font-size: 20px; }
+  .lh__post__title { font-size: 18px; }
+  .lh__chrome-title { display: none; }
 }
 
 /* ---------- highlight.js tokens (mapped to palette) ---------- */

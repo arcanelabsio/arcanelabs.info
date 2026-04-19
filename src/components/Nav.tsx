@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Fragment, useState, useEffect } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 const links = [
   { to: "/", label: "Home", end: true },
@@ -9,12 +9,34 @@ const links = [
 ];
 
 export function Nav() {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  // Close the mobile menu on navigation
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
   return (
     <nav className="lh__nav" aria-label="Primary">
-      <div className="lh__nav-links">
+      <div className="lh__nav-header">
         <Link to="/" className="lh__nav-brand">
           arcanelabs
         </Link>
+        <button
+          className="lh__nav-toggle"
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          aria-controls="nav-links"
+          aria-label={open ? "Close menu" : "Open menu"}
+        >
+          {open ? "✕" : "≡"}
+        </button>
+      </div>
+      <div
+        id="nav-links"
+        className={`lh__nav-links${open ? " is-open" : ""}`}
+      >
         {links.map((l, i) => (
           <Fragment key={l.to}>
             <NavLink
