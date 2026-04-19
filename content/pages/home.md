@@ -13,12 +13,6 @@ Projects graduate into this catalog once they're maintained,
 release-ready, and externally consumable — as an app, a library, or
 a tool anyone can install.
 
-## The three rules
-
-1. *Your data* should stay yours.
-2. *The best features* don't need a server.
-3. *Complexity* should live in the architecture — not in the user's face.
-
 ## The catalog
 
 - [**cloud_sync**](/projects/cloud_sync) — bidirectional file sync
