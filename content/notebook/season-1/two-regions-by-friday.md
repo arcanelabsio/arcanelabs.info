@@ -41,7 +41,7 @@ Peter Deutsch (and later James Gosling) at Sun Microsystems in the 90s noticed t
 
 The fallacies aren't a *theorem*. They're a *vibe check*. Before any distributed-systems design ships, walk the list and ask: *what does my system do when this is violated?* If the answer for any item is "it crashes" or "it returns wrong data silently" — that's a design bug, not an edge case.
 
-The Senior-to-Staff inflection on this list is which violations you instinctively *design against* vs. which you reactively patch after an outage. Anjali's whiteboard move, before touching the architecture diagram, is the Staff reflex applied: *write down what we already know we're going to get wrong, before we draw the thing.*
+The list earns its keep as a habit, not a theorem. Walked before the diagram, it forces failure modes into the design phase. Walked only after an outage, it's a postmortem checklist.
 
 ## Mental model
 
@@ -55,10 +55,6 @@ The Senior-to-Staff inflection on this list is which violations you instinctivel
 | One admin | Hard-code dependency endpoints | Service discovery + versioned APIs + graceful degradation |
 | Transport free | JSON everywhere | Schema + binary protocol on hot paths |
 | Homogeneous | Assume HTTP/2 + TLS 1.3 | Negotiate + fallback + measure |
-
-## The Staff-engineer reflex
-
-Anjali didn't reach for the architecture diagram first. She reached for *what we already know we'll get wrong*. The diagram comes after the failure modes are named. Junior and Senior engineers solve the problem in front of them; Staff engineers solve the problem in front of them *plus* the failure mode that hasn't surfaced yet. The eight fallacies are her checklist for the second part. The move is small — a whiteboard, three minutes — but it changes what Friday looks like.
 
 ## One question to journal
 
