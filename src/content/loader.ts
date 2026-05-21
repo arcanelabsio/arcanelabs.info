@@ -2,6 +2,7 @@ import { splitFrontmatter } from "./frontmatter";
 import type {
   Link,
   NotebookEpisode,
+  NotebookIntro,
   NotebookSeasonSummary,
   Page,
   Post,
@@ -34,6 +35,15 @@ const PAGE_RAW = import.meta.glob("/content/pages/*.md", {
 }) as Record<string, string>;
 
 const NOTEBOOK_RAW = import.meta.glob("/content/notebook/*/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+// Notebook-level meta files (intro, future about/credits) live as
+// /content/notebook/_<slug>.md — outside the season folders so the
+// episode glob above doesn't pick them up.
+const NOTEBOOK_META_RAW = import.meta.glob("/content/notebook/_*.md", {
   query: "?raw",
   import: "default",
   eager: true,
@@ -155,6 +165,16 @@ function asEpisodeNumber(v: unknown): number {
   return 0;
 }
 
+function parseNotebookIntro(raw: string): NotebookIntro {
+  const { data, body } = splitFrontmatter(raw);
+  return {
+    title: asString(data.title, "The Tessera Notebook"),
+    description: asString(data.description),
+    greeting: typeof data.greeting === "string" ? data.greeting : undefined,
+    body,
+  };
+}
+
 function parseNotebookEpisode(path: string, raw: string): NotebookEpisode {
   const match = NOTEBOOK_FILE.exec(path);
   if (!match) {
@@ -221,6 +241,16 @@ export const pages: Record<string, Page> = Object.fromEntries(
 export const notebookEpisodes: NotebookEpisode[] = Object.entries(NOTEBOOK_RAW)
   .map(([p, raw]) => parseNotebookEpisode(p, raw))
   .sort((a, b) => a.episode - b.episode);
+
+// Landing-page intro for /notebook. Undefined if no `_intro.md` exists
+// in the content directory — the route falls back to hardcoded copy.
+export const notebookIntro: NotebookIntro | undefined = (() => {
+  const introPath = Object.keys(NOTEBOOK_META_RAW).find((p) =>
+    p.endsWith("/_intro.md"),
+  );
+  if (!introPath) return undefined;
+  return parseNotebookIntro(NOTEBOOK_META_RAW[introPath]);
+})();
 
 // Most recently published episode across all seasons — used as the "today"
 // anchor on /notebook and the "From the Notebook" callout on the home page.

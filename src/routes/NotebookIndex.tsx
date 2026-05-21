@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import { TerminalShell } from "../components/TerminalShell";
-import { latestNotebookEpisode, notebookSeasons } from "../content/loader";
+import { Markdown } from "../components/Markdown";
+import {
+  latestNotebookEpisode,
+  notebookIntro,
+  notebookSeasons,
+} from "../content/loader";
 
 const DATE_FMT = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -32,37 +37,55 @@ export function NotebookIndex() {
   );
   const latest = latestNotebookEpisode;
 
+  const greeting =
+    notebookIntro?.greeting ??
+    "The Tessera Notebook — a daily platform-engineering story.";
+
   return (
     <TerminalShell chromeTitle="notebook">
       <section className="lh__section" aria-labelledby="notebook-intro">
         <p className="lh__greeting" id="notebook-intro">
-          The Tessera Notebook — a daily platform-engineering story.
+          {greeting}
         </p>
         <hr className="lh__rule" />
-        <p>
-          A fictional engineering team at a fictional company called{" "}
-          <strong>Tessera</strong> — a multi-tenant developer-infrastructure SaaS.
-          We follow Tessera as it grows (POC → MVP → 10K → 1M → 10M → beyond) and
-          watch the team navigate the platform-engineering problems that arrive at
-          each scale tier.
-        </p>
-        <p>
-          One episode a day. Three scene types alternate by feel:{" "}
-          <span className="lh__scene-badge lh__scene-badge--feature">FEATURE</span>{" "}
-          ships,{" "}
-          <span className="lh__scene-badge lh__scene-badge--incident">INCIDENT</span>{" "}
-          postmortems,{" "}
-          <span className="lh__scene-badge lh__scene-badge--support">SUPPORT</span>{" "}
-          escalations, and{" "}
-          <span className="lh__scene-badge lh__scene-badge--decision">DECISION</span>{" "}
-          rooms. The concept of the day is whatever the scene needed.
-        </p>
-        <p>
-          <em>
-            There is no finale. Seasons end when their conceptual scaffold is
-            complete, not on a fixed count.
-          </em>
-        </p>
+        {notebookIntro ? (
+          <Markdown source={notebookIntro.body} variant="page" />
+        ) : (
+          <>
+            <p>
+              A fictional engineering team at a fictional company called{" "}
+              <strong>Tessera</strong> — a multi-tenant developer-infrastructure
+              SaaS. We follow Tessera as it grows (POC → MVP → 10K → 1M → 10M →
+              beyond) and watch the team navigate the platform-engineering
+              problems that arrive at each scale tier.
+            </p>
+            <p>
+              One episode a day. Three scene types alternate by feel:{" "}
+              <span className="lh__scene-badge lh__scene-badge--feature">
+                FEATURE
+              </span>{" "}
+              ships,{" "}
+              <span className="lh__scene-badge lh__scene-badge--incident">
+                INCIDENT
+              </span>{" "}
+              postmortems,{" "}
+              <span className="lh__scene-badge lh__scene-badge--support">
+                SUPPORT
+              </span>{" "}
+              escalations, and{" "}
+              <span className="lh__scene-badge lh__scene-badge--decision">
+                DECISION
+              </span>{" "}
+              rooms. The concept of the day is whatever the scene needed.
+            </p>
+            <p>
+              <em>
+                There is no finale. Seasons end when their conceptual scaffold
+                is complete, not on a fixed count.
+              </em>
+            </p>
+          </>
+        )}
       </section>
       {latest ? (
         <section className="lh__section" aria-labelledby="notebook-latest">

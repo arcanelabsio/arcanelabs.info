@@ -60,3 +60,13 @@ export type NotebookSeasonSummary = {
   description: string;   // pulled from the season's first episode or a season.md file
   episodes: NotebookEpisode[];
 };
+
+// Landing-page copy for /notebook. Sourced from a sibling-of-seasons
+// markdown file (content/notebook/_intro.md). Optional — when absent,
+// the route falls back to hardcoded copy.
+export type NotebookIntro = {
+  title: string;
+  description: string;
+  greeting?: string;     // hero line shown above the body (e.g., "The Tessera Notebook — a daily platform-engineering story.")
+  body: string;
+};
