@@ -30,4 +30,3 @@ a tool anyone can install.
   bootstrapper. *Shipping.*
 - [**Longeviti**](https://longeviti.app) — a nutrition coaching
   platform. *Active build.*
-- **Vael** — a local-first personal finance app. *Active build.*

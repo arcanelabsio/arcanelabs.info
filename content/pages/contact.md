@@ -14,7 +14,7 @@ if you'd prefer to be specific.
   Questions, partnerships, press, and anything that doesn't fit
   below.
 - **Product support** — [support@arcanelabs.info](mailto:support@arcanelabs.info).
-  Help with Longeviti, Vael, or any project in the catalog.
+  Help with Longeviti or any project in the catalog.
 - **Security** — [security@arcanelabs.info](mailto:security@arcanelabs.info).
   Vulnerability reports.
 - **Privacy** — [privacy@arcanelabs.info](mailto:privacy@arcanelabs.info).
