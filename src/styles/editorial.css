@@ -1038,3 +1038,195 @@ a { color: inherit; }
   padding: 0;
   margin: 0;
 }
+
+/* ======================================================================
+   Notebook — daily editorial episodes (/notebook, /notebook/:season,
+   /notebook/:season/:slug)
+
+   Reuses .lh__post, .lh__list--linkable, and the terminal-window shell.
+   Adds scene-type colour-coding, an episode metadata block, and
+   prev/next episode navigation styled to match the existing aesthetic.
+   ====================================================================== */
+
+/* ---------- Scene-type semantic colour tokens ---------- */
+:root {
+  --scene-feature: var(--mint);          /* shipping / building forward */
+  --scene-incident: var(--red);          /* something broke / postmortem */
+  --scene-support: var(--amber);         /* customer ticket / escalation */
+  --scene-decision: var(--blue);         /* internal debate / design review */
+}
+
+/* ---------- Scene-type badge ---------- */
+.lh__scene-badge {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+  background: transparent;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+.lh__scene-badge--feature   { color: var(--scene-feature); }
+.lh__scene-badge--incident  { color: var(--scene-incident); }
+.lh__scene-badge--support   { color: var(--scene-support); }
+.lh__scene-badge--decision  { color: var(--scene-decision); }
+
+/* ---------- Episode metadata block (on /notebook/:season/:slug) ---------- */
+.lh__ep-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  margin: 0 0 8px;
+  padding: 12px 14px;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--mint);
+  border-radius: 0 4px 4px 0;
+  font-size: 12px;
+  color: var(--fg-mute);
+  line-height: 1.6;
+}
+.lh__ep-meta__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.lh__ep-meta__label {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.lh__ep-meta__value { color: var(--fg-mute); }
+.lh__ep-meta__value strong { color: var(--fg); font-weight: 600; }
+
+/* ---------- Notebook season cards (/notebook index) ---------- */
+.lh__list--linkable li .lh__card-link .lh__season-meta {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Episode list entries (/notebook/:season) ---------- */
+.lh__ep-card {
+  display: block;
+  padding: 14px 16px;
+  border-left: 2px solid transparent;
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+.lh__ep-card:hover,
+.lh__ep-card:focus-visible {
+  background: var(--subtle);
+}
+.lh__ep-card[data-scene="feature"]:hover   { border-left-color: var(--scene-feature); }
+.lh__ep-card[data-scene="incident"]:hover  { border-left-color: var(--scene-incident); }
+.lh__ep-card[data-scene="support"]:hover   { border-left-color: var(--scene-support); }
+.lh__ep-card[data-scene="decision"]:hover  { border-left-color: var(--scene-decision); }
+
+.lh__ep-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 12px;
+  margin-bottom: 4px;
+}
+.lh__ep-card__num {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.lh__ep-card__title {
+  color: var(--fg);
+  font-weight: 600;
+  font-size: 15px;
+}
+.lh__ep-card:hover .lh__ep-card__title,
+.lh__ep-card:focus-visible .lh__ep-card__title {
+  color: var(--mint);
+}
+.lh__ep-card__desc {
+  display: block;
+  color: var(--fg-mute);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 2px;
+}
+.lh__ep-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.lh__ep-card__foot time { font-variant-numeric: tabular-nums lining-nums; }
+.lh__ep-card__foot em {
+  font-style: normal;
+  color: var(--fg-mute);
+}
+
+/* ---------- Episode prev/next nav (inside post) ---------- */
+.lh__ep-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 2.5rem 0 1rem;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.lh__ep-nav__slot {
+  display: block;
+  padding: 12px 14px;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--fg-mute);
+  text-decoration: none;
+  border-bottom: 0;
+  transition: border-color 200ms ease, color 200ms ease, background-color 200ms ease;
+  min-height: 60px;
+}
+.lh__ep-nav__slot:hover,
+.lh__ep-nav__slot:focus-visible {
+  border-color: var(--mint);
+  color: var(--fg);
+  background: var(--bg-2);
+}
+.lh__ep-nav__slot--next { text-align: right; }
+.lh__ep-nav__dir {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.lh__ep-nav__title { font-size: 13px; line-height: 1.45; }
+.lh__ep-nav__slot--empty {
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  cursor: default;
+}
+
+@media (max-width: 560px) {
+  .lh__ep-nav { grid-template-columns: 1fr; }
+  .lh__ep-nav__slot--next { text-align: left; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .lh__ep-card,
+  .lh__ep-nav__slot { transition: none; }
+}

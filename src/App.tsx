@@ -7,6 +7,9 @@ import { Project } from "./routes/Project";
 import { Company } from "./routes/Company";
 import { Contact } from "./routes/Contact";
 import { NotFound } from "./routes/NotFound";
+import { NotebookIndex } from "./routes/NotebookIndex";
+import { NotebookSeason } from "./routes/NotebookSeason";
+import { NotebookEpisode } from "./routes/NotebookEpisode";
 import { RouteEffects } from "./components/RouteEffects";
 
 // Layout route wraps every page and hosts cross-route side effects
@@ -33,6 +36,9 @@ export const routes: RouteObject[] = [
       { path: "/", element: <Home /> },
       { path: "/writing", element: <WritingIndex /> },
       { path: "/writing/:slug", element: <Post /> },
+      { path: "/notebook", element: <NotebookIndex /> },
+      { path: "/notebook/:season", element: <NotebookSeason /> },
+      { path: "/notebook/:season/:slug", element: <NotebookEpisode /> },
       { path: "/projects/:slug", element: <Project /> },
       { path: "/company", element: <Company /> },
       { path: "/contact", element: <Contact /> },
