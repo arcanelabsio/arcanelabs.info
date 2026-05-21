@@ -42,7 +42,10 @@ export function NotebookEpisode() {
   const padded = String(ep.episode).padStart(2, "0");
 
   return (
-    <TerminalShell chromeTitle={`Day ${ep.episode} — ${ep.title}`}>
+    <TerminalShell
+      chromeTitle={`notebook / ${ep.season} / day-${padded}.md`}
+      chromeVariant="quiet"
+    >
       <article className="lh__post" aria-labelledby="episode-title">
         <header className="lh__post__head">
           <span className="lh__post__crumb">

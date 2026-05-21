@@ -1,6 +1,28 @@
 import { Link } from "react-router-dom";
 import { TerminalShell } from "../components/TerminalShell";
-import { notebookSeasons } from "../content/loader";
+import { latestNotebookEpisode, notebookSeasons } from "../content/loader";
+
+const DATE_FMT = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+function formatDate(iso: string): string {
+  if (!iso) return "";
+  try {
+    return DATE_FMT.format(new Date(iso));
+  } catch {
+    return iso;
+  }
+}
+
+const SCENE_LABEL: Record<string, string> = {
+  feature: "FEATURE",
+  incident: "INCIDENT",
+  support: "SUPPORT",
+  decision: "DECISION",
+};
 
 export function NotebookIndex() {
   const hasContent = notebookSeasons.length > 0;
@@ -8,6 +30,7 @@ export function NotebookIndex() {
     (sum, s) => sum + s.episodes.length,
     0,
   );
+  const latest = latestNotebookEpisode;
 
   return (
     <TerminalShell chromeTitle="notebook">
@@ -41,6 +64,40 @@ export function NotebookIndex() {
           </em>
         </p>
       </section>
+      {latest ? (
+        <section className="lh__section" aria-labelledby="notebook-latest">
+          <div className="lh__sep" id="notebook-latest">
+            ── <strong>LATEST</strong> ──────────────────────────────────────────────────
+          </div>
+          <Link
+            to={`/notebook/${latest.season}/${latest.slug}`}
+            className="lh__ep-hero"
+            data-scene={latest.sceneType}
+            aria-label={`Latest episode: Day ${latest.episode}, ${latest.title}`}
+          >
+            <span className="lh__ep-hero__head">
+              <span className="lh__ep-hero__day">
+                Day {String(latest.episode).padStart(2, "0")}
+              </span>
+              <span
+                className={`lh__scene-badge lh__scene-badge--${latest.sceneType}`}
+              >
+                {SCENE_LABEL[latest.sceneType] ?? latest.sceneType.toUpperCase()}
+              </span>
+              {latest.date ? (
+                <time className="lh__ep-hero__date" dateTime={latest.date}>
+                  {formatDate(latest.date)}
+                </time>
+              ) : null}
+            </span>
+            <h2 className="lh__ep-hero__title">{latest.title}</h2>
+            {latest.description ? (
+              <p className="lh__ep-hero__desc">{latest.description}</p>
+            ) : null}
+            <span className="lh__ep-hero__cta">read this episode →</span>
+          </Link>
+        </section>
+      ) : null}
       <section className="lh__section" aria-labelledby="notebook-seasons">
         <div className="lh__sep" id="notebook-seasons">
           ── <strong>SEASONS</strong> ──────────────────────────────────────────────────

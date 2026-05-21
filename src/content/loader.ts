@@ -222,6 +222,18 @@ export const notebookEpisodes: NotebookEpisode[] = Object.entries(NOTEBOOK_RAW)
   .map(([p, raw]) => parseNotebookEpisode(p, raw))
   .sort((a, b) => a.episode - b.episode);
 
+// Most recently published episode across all seasons — used as the "today"
+// anchor on /notebook and the "From the Notebook" callout on the home page.
+// Sort by date desc, with episode-number as the tiebreaker (in case two
+// episodes share a date during pre-launch backfill).
+export const latestNotebookEpisode: NotebookEpisode | undefined = (() => {
+  if (notebookEpisodes.length === 0) return undefined;
+  return [...notebookEpisodes].sort((a, b) => {
+    if (a.date !== b.date) return b.date.localeCompare(a.date);
+    return b.episode - a.episode;
+  })[0];
+})();
+
 export const notebookSeasons: NotebookSeasonSummary[] = (() => {
   const bySeason = new Map<string, NotebookEpisode[]>();
   for (const ep of notebookEpisodes) {
