@@ -13,9 +13,6 @@ links:
   - label: "GitHub"
     url: "https://github.com/arcanelabsio/drive_sync_flutter"
     note: "archival source — no new releases"
-  - label: "Getting started"
-    url: "/writing/getting-started-with-drive-sync-flutter"
-    note: "legacy tutorial (still valid for v1.2.0)"
 release:
   version: "v1.2.0 (final)"
   date: 2026-04-17

@@ -1,8 +1,6 @@
 import type { RouteObject } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { Home } from "./routes/Home";
-import { WritingIndex } from "./routes/WritingIndex";
-import { Post } from "./routes/Post";
 import { Project } from "./routes/Project";
 import { Company } from "./routes/Company";
 import { Contact } from "./routes/Contact";
@@ -34,8 +32,6 @@ export const routes: RouteObject[] = [
     element: <RootLayout />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/writing", element: <WritingIndex /> },
-      { path: "/writing/:slug", element: <Post /> },
       { path: "/notebook", element: <NotebookIndex /> },
       { path: "/notebook/:season", element: <NotebookSeason /> },
       { path: "/notebook/:season/:slug", element: <NotebookEpisode /> },

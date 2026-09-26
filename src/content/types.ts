@@ -10,14 +10,6 @@ export type Release = {
   notes?: string;
 };
 
-export type Post = {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  body: string;
-};
-
 export type Project = {
   slug: string;
   name: string;

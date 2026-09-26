@@ -37,12 +37,6 @@ export function NotFound() {
             — home. What Arcane Labs is and what's in the catalog.
           </li>
           <li>
-            <Link to="/writing">
-              <strong>/writing</strong>
-            </Link>{" "}
-            — notes, articles, and user guides.
-          </li>
-          <li>
             <Link to="/company">
               <strong>/company</strong>
             </Link>{" "}

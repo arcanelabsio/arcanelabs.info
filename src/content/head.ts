@@ -1,4 +1,4 @@
-import { getPage, posts, projects } from "./loader";
+import { getPage, projects } from "./loader";
 
 export type Head = {
   title: string;
@@ -22,13 +22,6 @@ export function resolveHead(url: string): Head {
     };
   }
 
-  if (path === "/writing") {
-    return {
-      title: `Writing — ${SITE}`,
-      description: "Notes, articles, and user guides from Arcane Labs.",
-    };
-  }
-
   if (path === "/company") {
     const page = getPage("company");
     return {
@@ -43,17 +36,6 @@ export function resolveHead(url: string): Head {
       title: `${page?.title ?? "Contact"} — ${SITE}`,
       description: page?.description ?? "",
     };
-  }
-
-  const postMatch = /^\/writing\/([A-Za-z0-9_-]+)$/.exec(path);
-  if (postMatch) {
-    const post = posts.find((p) => p.slug === postMatch[1]);
-    if (post) {
-      return {
-        title: `${post.title} — ${SITE}`,
-        description: post.description,
-      };
-    }
   }
 
   const projMatch = /^\/projects\/([A-Za-z0-9_-]+)$/.exec(path);

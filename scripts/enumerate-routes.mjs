@@ -7,7 +7,7 @@ const ROOT = path.resolve(import.meta.dirname, "..");
 // rather not import across the TS/ESM boundary. If a static route
 // is added in App.tsx without being added here, the prerender just
 // skips it (and the sitemap omits it) — harmless, spotted fast.
-const STATIC_PATHS = ["/", "/writing", "/notebook", "/company", "/contact"];
+const STATIC_PATHS = ["/", "/notebook", "/company", "/contact"];
 
 async function slugsFromDir(rel, pattern, transform) {
   const dir = path.join(ROOT, rel);
@@ -65,19 +65,13 @@ async function notebookRoutes() {
 }
 
 export async function enumerateRoutes() {
-  const [postSlugs, projectSlugs, notebookUrls] = await Promise.all([
-    slugsFromDir(
-      "content/posts",
-      /^\d{4}-\d{2}-\d{2}-(.+)\.md$/,
-      (m) => m[1],
-    ),
+  const [projectSlugs, notebookUrls] = await Promise.all([
     slugsFromDir("content/projects", /^(.+)\.md$/, (m) => m[1]),
     notebookRoutes(),
   ]);
 
   return [
     ...STATIC_PATHS,
-    ...postSlugs.map((s) => `/writing/${s}`),
     ...projectSlugs.map((s) => `/projects/${s}`),
     ...notebookUrls,
   ];
